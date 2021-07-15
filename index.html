@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8" />
+    <!-- <meta charset="UTF-8"> 
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+             <meta http-equiv="X-UA-Compatible" content="ie=edge">  -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Welcome.html">Home</a></li>
+                <li><a href="Attractions.html">Places to visit</a></li>
+                <li><a href="Music.html">Music</a></li>
+                <li><a href="Food.html">Things to eat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="stylishBox someSpacing">
+            <h1>Welcome to Greece!</h1>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2X61DHwtVe4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>
+                <em>My website</em> is about <a href="https://en.wikipedia.org/wiki/Greece">Greece</a>. It is going to have the following pages: Attractions, Music, Food
+            </p>
+            <img src="greecemap.jpg" class="mediumPictures" alt="Map of Greece" />
+
+            <h2>Coding websites is fun!</h2>
+
+            <a href="https://en.wikipedia.org/wiki/Parthenon">
+                <img src="parthenon.jpg" class="topDivider" class="smallPictures" alt="Parthenon" /> </a>
+
+            <p>Some animals you might see in Greece are:</p>
+            <ul>
+
+                <li>Cows</li>
+                <li>Sheep</li>
+                <li>Foxes</li>
+                <li>Bats</li>
+            </ul>
+
+            <p>My favourite things to eat and drink in Greece are:</p>
+            <ol>
+                <li>Ouzo</li>
+                <li>Gyros</li>
+                <li>Mousaka</li>
+            </ol>
+    </main>
+
+    <div id="like_button_container"></div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
+
+
+
+</body>
+
+</html>
