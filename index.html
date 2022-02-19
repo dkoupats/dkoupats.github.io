@@ -2,25 +2,23 @@
 <html lang="en">
 
 <head>
-    <title>My Webpage</title>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Personal Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="./src/main.js"></script>
 </head>
 
 <body>
   <header>
     <div class="container">
-      
+
       <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-          <!-- <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -50,11 +48,11 @@
 
     </div>
   </header>
-    
+
   <main>
     <div class="container">
       <br>
-      <h1>Dimitris Koupatsiaris Webpage</h1>
+      <h1>Dimitris Koupatsiaris</h1>
       <br>
 
       <iframe width="560" height="315" src="https://www.youtube.com/embed/2X61DHwtVe4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -65,17 +63,22 @@
     <div class="container">
       <br>
       <p>
-        <em>I come from</em> <a href="https://en.wikipedia.org/wiki/Greece">Greece</a>. 
+        <em>I come from</em> <a href="https://en.wikipedia.org/wiki/Greece">Greece</a>.
         For those who need a map, <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Greece_in_Europe.svg/701px-Greece_in_Europe.svg.png" target="_blank">here</a> it is.</p>
       <br>
-      
+
       <p>This is going to become a blog eventually.</p>
       <br>
-      
+
     </div>
   </main>
 
-    
+  <div id="myapp"></div>
+  <script>
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp')
+  });
+  </script>
 
 </body>
 
