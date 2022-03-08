@@ -1,5 +1,5 @@
 
-module Main exposing (main)
+module First exposing (main)
 
 import Browser
 import Html exposing (..)
@@ -8,6 +8,21 @@ import Html.Events exposing (onClick)
 import Http
 import Json.Decode as Decode exposing (Decoder, int, list, string)
 import Json.Decode.Pipeline exposing (required)
+
+
+-- MODEL
+
+
+
+
+-- VIEW
+
+
+
+
+-- UPDATE
+
+
 
 
 type alias Post =

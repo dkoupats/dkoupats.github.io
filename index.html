@@ -31,7 +31,7 @@
       </div>
     </header>
 
-    <div class="nav-scroller py-1 mb-2">
+    <div class="nav-scroller py-1 mb-2" id="top">
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 link-secondary" href="#">Technology</a>
         <a class="p-2 link-secondary" href="#">Opinion</a>
@@ -83,49 +83,17 @@
           <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
         </article>
 
-        <article class="blog-post">
-          <h2 class="blog-post-title">Another blog post</h2>
-          <p class="blog-post-meta">December 23, 2020 by <a href="#">Dimitris</a></p>
+        <div id="myapp"></div>
 
-          <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        <script src="main.js"></script>
 
-          <h3>Example table</h3>
-          <p>And don't forget about tables in these posts:</p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Upvotes</th>
-                <th>Downvotes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Alice</td>
-                <td>10</td>
-                <td>11</td>
-              </tr>
-              <tr>
-                <td>Bob</td>
-                <td>4</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Charlie</td>
-                <td>7</td>
-                <td>9</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Totals</td>
-                <td>21</td>
-                <td>23</td>
-              </tr>
-            </tfoot>
-          </table>
+        <script>
+          var app = Elm.Main.init({
+          node: document.getElementById('myapp')
+          });
+        </script>
 
-        </article>
+
 
         <nav class="blog-pagination" aria-label="Pagination">
           <a class="btn btn-outline-primary" href="#">Older</a>
@@ -168,21 +136,10 @@
   <footer class="blog-footer">
     <p>Used the Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
     <p>
-      <a href="#">Back to top</a>
+      <a href=#top>Back to top</a>
     </p>
   </footer>
 
-
-
-  <div id="myapp"></div>
-
-  <script src="main.js"></script>
-
-  <script>
-  var app = Elm.Main.init({
-    node: document.getElementById('myapp')
-  });
-  </script>
 
 </body>
 
