@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Personal Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Dimitris Koupatsiaris">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <main class="container">
+
+    <p >This article is about
+      <strong class="d-inline-block mb-2 text-primary" id="post-relation">
+      </strong>
+    </p>
+
+    <p class="blog-post-meta" id="post-date"></p>
+    <p><a href="#" id="post-author"></a></p>
+
+    <h1 class="display-4 fst-italic" id="post-title"></h1>
+
+    <p class="lead my-3" id="post-1st-para"></p>
+
+    <p class="lead my-3" id="post-2nd-para"></p>
+
+    <hr>
+
+
+    <script>
+      const xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onload = function() {
+        const myObj = JSON.parse(this.responseText);
+
+        document.getElementById("post-relation").innerHTML = myObj.relation;
+
+        const dt = new Date(myObj.date);
+        document.getElementById("post-date").innerHTML =
+          "Posted on " + dt.toDateString() + " by ";
+        document.getElementById("post-author").innerHTML = myObj.author;
+
+        const newTitle = document.getElementById("post-title").innerHTML = myObj.title;
+
+        const paras = myObj.body;
+        const firstPara = document.getElementById("post-1st-para").innerHTML = paras[0];
+        const secondPara = document.getElementById("post-2nd-para").innerHTML = paras[1];
+
+      }
+      xmlhttp.open("GET", "https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost");
+      xmlhttp.send();
+
+    </script>
+
+  </main>
+
+  <footer class="blog-footer">
+    <p>Created by &copy Dimitris Koupatsiaris <a href="https://twitter.com/dkoupats">@dkoupats</a>.</p>
+    <p>
+      <a href=#post-relation>Back to top</a>
+    </p>
+  </footer>
+
+
+</body>
+
+</html>
