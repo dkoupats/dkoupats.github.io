@@ -31,7 +31,6 @@
         <a class="p-2 link-secondary" href="#">Opinion</a>
         <a class="p-2 link-secondary" href="#">Science</a>
         <a class="p-2 link-secondary" href="#">Health</a>
-        <a class="p-2 link-secondary" href="#">Style</a>
         <a class="p-2 link-secondary" href="#">Travel</a>
       </nav>
     </div>
@@ -41,30 +40,44 @@
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
         <strong class="d-inline-block mb-2 text-primary" id="feat-relation"></strong>
+
+        <p class="blog-post-meta">
+          Posted on <span id="feat-date"></span> by <a href="#" id="feat-author"></a>
+        </p>
+
         <h1 class="display-4 fst-italic" id="feat-title"></h1>
-        <p class="blog-post-meta" id="feat-date-author"></p>
+
         <p class="lead my-3" id="feat-1st-para"></p>
+
         <p class="lead mb-0"><a href="FeaturedPost.html" class="text-white fw-bold" target="_blank">Continue reading...</a></p>
       </div>
     </div>
 
     <script>
-      const xmlhttp = new XMLHttpRequest();
 
-      xmlhttp.onload = function() {
-        const myObj = JSON.parse(this.responseText);
-
-        document.getElementById("feat-relation").innerHTML = myObj.relation;
-        document.getElementById("feat-title").innerHTML = myObj.title;
-        const dt = new Date(myObj.date);
-        document.getElementById("feat-date-author").innerHTML =
-          "Posted on " + dt.toDateString() + " by " + myObj.author;
-        const paras = myObj.body;
-        document.getElementById("feat-1st-para").innerHTML = paras[0];
-
+      fetch("https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost")
+      .then(function(response) {
+      if (!response.ok) {
+        throw new Error("HTTP error, status = " + response.status);
       }
-      xmlhttp.open("GET", "https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost");
-      xmlhttp.send();
+      return response.json();
+      })
+      .then(function(json) {
+        document.getElementById("feat-relation").innerHTML = json.relation;
+        const dte = new Date(json.date);
+        document.getElementById("feat-date").innerHTML = dte.toDateString();
+        document.getElementById("feat-author").innerHTML = json.author;
+        document.getElementById("feat-title").innerHTML = json.title;
+        document.getElementById("feat-1st-para").innerHTML = json.body[0];
+
+      })
+      .catch(function(error) {
+        let p = document.createElement('p');
+        p.appendChild(
+          document.createTextNode('Error: ' + error.message)
+        );
+      document.body.insertBefore(p, myList);
+      });
 
     </script>
 
@@ -80,18 +93,6 @@
           <hr>
           <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
         </article>
-
-        <div id="myapp"></div>
-
-        <script src="main.js"></script>
-
-        <script>
-          var app = Elm.Main.init({
-          node: document.getElementById('myapp')
-          });
-        </script>
-
-
 
         <nav class="blog-pagination" aria-label="Pagination">
           <a class="btn btn-outline-primary" href="#">Older</a>
