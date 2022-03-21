@@ -45,20 +45,7 @@
 
 
 
-      
-
-    <p >This article is about
-      <strong class="d-inline-block mb-2 text-primary" id="post-relation">
-      </strong>
-    </p>
     <hr>
-
-    <p class="blog-post-meta">
-      Posted on <span id="post-date"></span> by <a href="#" id="post-author"></a>
-    </p>
-
-    <h1 class="display-4 fst-italic" id="post-title"></h1>
-
     <ul>
     </ul>
 
@@ -67,32 +54,50 @@
 
       let myList = document.querySelector('ul');
 
-      fetch("https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost")
+      fetch("https://my-json-server.typicode.com/dkoupats/jsondata/posts")
       .then(function(response) {
       if (!response.ok) {
         throw new Error("HTTP error, status = " + response.status);
       }
-      return response.json();
+      let posts = response.json();
+      return posts;
       })
-      .then(function(json) {
-        document.getElementById("post-relation").innerHTML = json.relation;
-        const dte = new Date(json.date);
-        document.getElementById("post-date").innerHTML = dte.toDateString();
-        document.getElementById("post-author").innerHTML = json.author;
-        document.getElementById("post-title").innerHTML = json.title;
+      .then(function(posts) {
+        for(let n = 0; n < posts.length; n++) {
+          let post = posts[n];
+          console.log( post );
 
-        for(let n = 0; n < json.body.length; n++) {
-          let listItem = document.createElement('li');
-          listItem.innerHTML = json.body[n];
-          myList.appendChild(listItem);
+          let item = document.createElement('li');
+          let artcl = document.createElement('article');
+
+          let ttl = document.createElement('h2');
+          ttl.innerHTML = post.title;
+
+          let dtAuth = document.createElement('p');
+          let dte = new Date(post.date);
+          dtAuth.innerHTML = "Posted on " + dte.toDateString() + " by " + post.author;
+
+          let topic = document.createElement('p');
+          topic.innerHTML = "The post is about " + post.relation;
+
+          artcl.appendChild(ttl);
+          artcl.appendChild(dtAuth);
+          artcl.appendChild(topic);
+
+          for(let m = 0; m < post.body.length; m++) {
+            let para = document.createElement('p');
+            para.innerHTML = post.body[m];
+            artcl.appendChild(para);
+          }
+
+          let empty = document.createElement('br');
+          artcl.appendChild(empty);
+
+          item.appendChild(artcl);
+          myList.appendChild(item);
+
         }
-      })
-      .catch(function(error) {
-        let p = document.createElement('p');
-        p.appendChild(
-          document.createTextNode('Error: ' + error.message)
-        );
-      document.body.insertBefore(p, myList);
+
       });
 
     </script>
