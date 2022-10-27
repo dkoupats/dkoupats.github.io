@@ -200,6 +200,7 @@
 
     <!-- Footer -->
     <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+
       <a href="https://www.facebook.com/dkoupatsiaris">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <span class="fa fa-facebook"></span>
@@ -211,7 +212,7 @@
       <i class="fa fa-twitter w3-hover-opacity"></i>
       <i class="fa fa-linkedin w3-hover-opacity"></i>
     </footer>
-    
+
   </body>
 
 
@@ -258,64 +259,23 @@
 
     <script>
 
-      fetch("https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost")
-      .then(function(response) {
-      if (!response.ok) {
-        throw new Error("HTTP error, status = " + response.status);
-      }
-      return response.json();
-      })
-      .then(function(json) {
-        document.getElementById("feat-relation").innerHTML = json.relation;
-        const dte = new Date(json.date);
-        document.getElementById("feat-date").innerHTML = dte.toDateString();
-        document.getElementById("feat-author").innerHTML = json.author;
-        document.getElementById("feat-title").innerHTML = json.title;
-        document.getElementById("feat-1st-para").innerHTML = json.body[0];
-
-      })
-      .catch(function(error) {
-        let p = document.createElement('p');
-        p.appendChild(
-          document.createTextNode('Error: ' + error.message)
-        );
-      document.body.insertBefore(p, myList);
-      });
+      
 
     </script>
 
-    <hr>
-
-    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6911431433177698304" height="334" width="504" frameborder="0" allowfullscreen="" title="Embedded post">
-    </iframe>
-
-
-
-    <hr>
+    
 
       <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
-          <div class="p-4 mb-3 bg-light rounded">
-            <h4 class="fst-italic">About</h4>
-            <p class="mb-0">This is the first webpage that I created, and naturally is a blog.
-              It my intention to enrich this work with additions, created with the use of the
-              <a href="https://elm-lang.org/">Elm Programming Language</a> in the near future.
-            </p>
-          </div>
+
+          
 
           <div class="p-4">
             <h4 class="fst-italic">Post Archive</h4>
             <a href="/pages/Posts.html" target="_blank">Posts</a>
           </div>
 
-          <div class="p-4">
-            <h4 class="fst-italic">Elsewhere</h4>
-            <ol class="list-unstyled">
-              <li><a href="https://github.com/dkoupats" target="_blank">GitHub</a></li>
-              <li><a href="https://twitter.com/dkoupats" target="_blank">Twitter</a></li>
-              <li><a href="https://www.facebook.com/dkoupatsiaris" target="_blank">Facebook</a></li>
-            </ol>
-          </div>
+          
         </div>
       </div>
       
