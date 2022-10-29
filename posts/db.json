@@ -17,17 +17,15 @@
             }
             , {
                 "id": 2
-                , "title": "Energy Security in the Built Environment"
+                , "title": "Some title"
                 , "relation": "Technology"
                 , "author": "Dimitris Koupatsiaris"
-                , "date": "2022-03-01"
-                , "abstract": "The preservation and expansion of natural resources has been a major concern from early historic years. From the industrial age however, energy natural resources received top priority at the cost of increased vulnerability to interruptions of energy supply. Especially during the last half century, the world witnessed energy crises with global impact and increase of energy costs. Recent energy crises highlighted the need for closer cooperation between sovereign nations and international organizations in order to avoid them in the future, or at least to mitigate their consequences. The concept of energy security emerged out of this process, and until recently it has been the focus of researchers in the realms of strategic planning, political relations and policy making in the energy sector. Energy security addresses three problems: availability of energy sources, uninterrupted flow of energy and affordable prices. The first deals with the selection of an energy source or a mixture of energy sources for which the time required for their depletion is as distant as possible, and as such it involves long-term prediction or minimization of the probability of long-term shortage. The second deals with forming the provisions that secure an uninterrupted energy flow, and as such it involves minimization of the probability of short-term shortage. Finally, the third problem deals with measures to avoid high energy costs that may constraint further operations. The selection of energy sources is usually based on current pricing and legislating restrictions during the design phase of a project, while the energy cost is chosen as the minimum allowed by the imposed restrictions. Energy flow interruptions are mitigated according to the maximum shortage allowed by legislature or industry standards for each sub-system. The cost and availability of different sources of energy change during the project life cycle, while solutions that mitigate short-term interruptions fail to prove cost effective. The introduction of a risk management process could help avoid unpleasant consequences, or predict them. The aim of this paper is to illustrate that energy security is a risk management problem, and as such it can be applied from large to small scale of structure manufacturing and operations, taking into account the long-term lιfe cycle of an energy demanding structure. From this perspective, it can be applied both in the design phase as well as the operational use of all structures and processes for which energy consumption constitutes a significant percentage of their operational life cycle cost."
+                , "date": "2022-03-03"
+                , "abstract": "Some abstract."
                 , "body": 
                     [
-                    "One definition of energy security is from the International Energy Agency, which states that it is the uninterrupted availability of energy sources at an affordable price, both in short-term as well as in long-term."
-                    , "Longterm energy security mainly deals with timely investments to supply energy in line with economic developments and environmental needs, while short-term energy security focuses on the ability of the energy system to react promptly to sudden changes in the supply-demand balance."
-                    , "Energy security was the principle reason for founding IEA, as it was formed in response to the 1973 oil crisis."
-                    , "However, between 1973 and 2014 the spectrum of the issues that energy security consists of has been broadened, at it is illustrated in the timeline of (IEA-Pol 2014)."
+                    "Para 1."
+                    , "Para 2."
                     ]
             }
         ]

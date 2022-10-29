@@ -19,8 +19,9 @@
     <!-- W3 JavaScript -->
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 
-    <!--<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
+    <!-- MathJax  -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Plotly JS -->
     <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
@@ -35,7 +36,22 @@
         font-family: 'Jost', sans-serif;
         font-weight: bold;
       }
-      ul {
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {font-weight: inherit;}
+      h1 {font-size: 36px}
+      h2 {font-size: 30px}
+      h3 {font-size: 24px}
+      h4 {font-size: 20px}
+      h5 {font-size: 18px}
+      h6 {font-size: 16px}
+
+      hr {
+        height: 0;
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 20px 0;
+      }
+
+      ul#references {
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -67,6 +83,12 @@
         </details>
         
       </div>
+
+      <img src="/Papers/zbynek-burival-GrmwVnVSSdU-unsplash.jpg" 
+        alt="Photo by Zbynek Burival
+          , Published on January 17, 2018, 
+          , Pump-jack mining crude oil with the sunset" 
+        style="width:100%">
     
     </header>
 
@@ -107,7 +129,8 @@
         taking into account the long-term life cycle of an energy demanding structure. 
         From this perspective, it can be applied both in the design phase as well as the operational use of all structures 
         and processes for which energy consumption constitutes a significant percentage of their operational life cycle cost.
-      </em></p>      
+      </em></p>
+
     </section>
       
     <section id="intro">
@@ -601,7 +624,7 @@
             , 37.42, 35.75, 31.83, 29.08, 28.75, 26.92, 14.44, 17.75, 14.87, 18.33, 23.19, 20.20, 19.25, 16.75, 15.66, 16.75, 20.46, 18.64, 11.91, 16.56 
             , 27.39, 23.00, 22.81, 27.69, 37.66, 50.04, 58.30, 64.20, 91.48, 53.48, 71.21, 87.04, 86.46, 91.17, 89.08 
           ]
-          , mode: 'lines+markers'
+          , mode: 'lines'
           , name: 'Nominal Price'
         };
 
@@ -618,21 +641,18 @@
             , 107.37, 92.98, 77.95, 68.97, 65.37, 59.10, 31.10, 36.89, 29.73, 34.91, 41.79, 35.03, 32.40, 27.39, 24.94, 25.96, 30.79, 27.43, 17.26, 23.42 
             , 37.55, 30.69, 29.92, 35.55, 47.05, 60.45, 68.28, 72.99, 100.01, 58.76, 77.11, 91.39, 88.95, 92.41, 89.08 
           ]
-          , mode: 'lines+markers'
+          , mode: 'lines'
           , name: 'Infl. Adjusted Price'
         };
 
         var trace3 = {
-          x: [ 
-            '1973-Transport', '2012-Transport', '1973-Industry', '2012-Industry'
-            , '1973-Other', '2012-Other', '1973-Non energy use', '2012-Non energy use'
-          ]
-          , y: [ 11, 26, 235, 688, 194, 912, 0, 0 ]
-          , name: 'Electricity'
-          , type: 'bar'
+          x: [ 1946, 2014 ]
+          , y: [ 19.41, 89.08 ]
+          , mode: 'lines+markers'
+          , name: 'Infl. Adj. Linear Approx.'
         };
 
-        var dataPlot = [trace1, trace2];
+        var dataPlot = [trace1, trace2, trace3 ];
 
         var layout = {
           yaxis: {
@@ -650,18 +670,124 @@
       </script>
 
 
-
-
-
-
-
       <p>
-        
+        Peak oil, based on the Hubbert peak theory (Hubbert 1956), is being seriously considered, 
+        leading to a number of reports produced to examine the consequences of its effects. 
+        One of the most known is the Hirsch report, which examined the time frame for the occurrence of peak oil, 
+        the necessary mitigating actions, and the likely impacts based on the timeliness of those actions, 
+        reaching a number of conclusions (Hirsch 2005), five of which are as follows: 
       </p>
 
+      <ul>
+
+        <li>
+          When world oil peaking will occur is not known with certainty, but the fact that it will occur is. 
+          The study indicated that it will occur within 20 years.
+        </li>
+    
+        <li>
+          Oil peaking will create a severe liquid fuels problem for the transportation sector, not an “energy crisis” in the usual sense that term has been used.
+        </li>
+    
+        <li>
+          Peaking will result in dramatically higher oil prices, which will cause protracted economic hardship.
+        </li>
+    
+        <li>
+          Mitigation will require a minimum of a decade of intense, expensive effort, because the scale of liquid fuels mitigation is inherently extremely large. 
+          Motor vehicles, aircraft, trains, and ships have no ready alternative to liquid fuels. 
+        </li>
+
+        <li>
+          Mitigating the peak oil presents a classic risk management problem.
+        </li>
+        
+      </ul>
+
+      <section id="hubbert-subsection">
+
+        <h3><b>Hubbert Peak Theory</b></h3>
+
+        <p>
+          The Hubbert peak theory is based on the observation that, in any finite geographical area the rate of production 
+          of any finite resource tends to follow a bell-shaped curve. 
+          The theory was initially developed, based on the data obtained on coal and crude oil, 
+          and the curve was mathematically defined later as the probability density function of the logistic distribution, 
+          depicted in <a href="#eq1">Equation 1<cite></cite></a>. 
+          The theory was based on the observations of production data for coal and crude oil from confined geographical regions and identified two key points. 
+          The first was the <strong>inflection point</strong>, the point from which the rate of increase in production stabilizes and after which 
+          the production increase rate declines. 
+          The second was the <strong>peak point</strong>, the point at which production increase diminishes. 
+          The principle of the theory is that once the inflection point is identified, 
+          the peak point can be predicted based on the associated production data. 
+        </p>
+
+        <p id="eq1">
+          \[ f(x; \mu,s) = 
+            { 
+            e^{ {x- \mu} \over s } \over 
+            { s \cdot \left( 1 + e^{ {x- \mu} \over s } \right)^2 } 
+            } 
+          \]
+        </p>
+
+        <p>Equation 1 above represents a probability distribution function, while the cumulative 
+          distribution function is represented by Equation 2 below.
+        </p>
+
+        <p id="eq2">
+          \[ F(x; \mu,s) = 
+            { 1 \over { 1 + e^{ {x- \mu} \over s } } } 
+          \].
+        </p>
+
+        <p>The physical quantities of the terms of the above equations, 
+          are explained below.
+        </p>
+
+        <dl>
+          <dt>\( f(x) \)</dt>
+          <dd>the instant (annual) resource production, where x is the time scale</dd>
+          <dt>\( F(x) \)</dt>
+          <dd>the cumulative resource production up to time x (extracted reserve)</dd>
+          <dt>\( \mu \)</dt>
+          <dd>the <strong>peak point</strong>, or the year that the resource production will reach its peak</dd>
+          <dt>\( \sigma^2 = { s^2 \cdot \pi^2 \over 3 } \)</dt>
+          <dd>The standarrd deviation \( \sigma \) is the uncertainty of the time (year)
+            when the oil peak will occur.
+          </dd>
+        </dl>
+
+        <p>
+          The theory was criticized by many researchers for incorrect prediction and subsequent adjustments of the 
+          peak time for various non-renewable resources, but especially for crude oil. 
+          The main reason for that is the knowledge of the total existing resource. 
+          In the case of crude oil, oil reserves are considered the amount of technically and economically recoverable oil. 
+          The total estimated amount in a reservoir is called oil in place, and only a fraction of this is considered as reserve. 
+          Thus, through the evolution of technology and demand, more reservoirs are discovered and larger fraction of the existing 
+          reservoirs is registered as reserves. 
+        </p>
+
+        <p>
+          In order to quantify the cost increase, we could consider a simplified problem. 
+          We define a fictitious energy source with reserve \( R_1 = F ( \infty, \mu = 2050, s=25 ) \), where \( F ( \infty ) = 1 \). 
+          We assume the knowledge of two more reservoirs that each adds 20% to the total reserve. 
+          Furthermore, the associated costs per unit are: \( C_1 = 1 \), \( C_2 = 1.2 \) and \( C_3 = 1.4 \). 
+          The objective of the problem is to maintain a stable production growth in order to meet the energy demands, 
+          and predict the instant extraction cost. 
+        </p>
+
+        <p>
+          In order to maintain a stable production growth, the solution is to align the production curves in order for 
+          all three inflection points to be tangent to the slope that defines stable production growth, 
+          as it is illustrated in Figure 3. 
+          Thus \( F_2 (x) =1.2 \cdot  F ( \infty, \mu = 2050, s=25 ) \), and \( F_3 (x) =1.4 \cdot  F ( \infty, \mu = 2062, s=25 ) \). 
+          Finally, Equation 3 illustrates the evolution of the resource cost per unit in reference to the inflection points 
+          (x1=1990, x2=2026, x3=2043) as:
+        </p>
 
 
-
+      </section>
 
 
     </section>
@@ -678,93 +804,9 @@
 
 
 
-Peak oil, based on the Hubbert peak theory (Hubbert 1956), is being seriously considered, leading to a number of reports produced to examine the consequences of its effects. One of the most known is the Hirsch report, which examined the time frame for the occurrence of peak oil, the necessary mitigating actions, and the likely impacts based on the timeliness of those actions, reaching a number of conclusions (Hirsch 2005), five of which are as follows:
- When world oil peaking will occur is not known with certainty, but the fact that it will occur is. The study indicated that it will occur within 20 years.
- Oil peaking will create a severe liquid fuels problem for the transportation sector, not an “energy crisis” in the usual sense that term has been used.
- Peaking will result in dramatically higher oil prices, which will cause protracted economic hardship.
- Mitigation will require a minimum of a decade of intense, expensive effort, because the scale of liquid fuels mitigation is inherently extremely large. Motor vehicles, aircraft, trains, and ships have no ready alternative to
-0,00
-20,00
-40,00
-60,00
-80,00
-100,00
-120,00
-Price [US$]
-Nominal Price
-Inflation Adjusted Price
-Poly. (Inflation Adjusted Price) © 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
-permitted without ASHRAE's prior written permission.
-liquid fuels.
- Mitigating the peak oil presents a classic risk management problem.
-Hubbert Peak Theory
-The Hubbert peak theory is based on the observation that, in any finite geographical area the rate of
-production of any finite resource tends to follow a bell-shaped curve. The theory was initially developed, based on the
-data obtained on coal and crude oil, and the curve was mathematically defined later as the probability density function
-of the logistic distribution, depicted in (1). The theory was based on the observations of production data for coal and
-crude oil from confined geographical regions and identified two key points. The first was an inflection point, the point
-from which the rate of increase in production stabilizes and after which the production increase rate declines. The
-second was the point at which production increase diminishes, and was named the peak point. The principle of the
-theory is that once the inflection point is identified, the peak point can be predicted based on the associated
-production data.
-    2
-1
-; , ; ,
-1 1
-x
-s
-x
-x
-s
-s
-e
-f x s F x s
-s e e
-
-
-
- 
-
-
-
- 
-
-  
-     
- 
-(1)
-where
-f(x) the instant (annual) resource production, where x is the time scale
-F(x) the cumulative resource production up to time x (extracted reserve)
-μ the peak point, or the year that the resource production will reach its peak
-2 2 2
-2
-2
-3
-3
-s
-s
- 
-
-
-   In probability theory, variance (σ2) measures how far a set of numbers is spread out.
-The theory was criticized by many researchers for incorrect prediction and subsequent adjustments of the
-peak time for various non-renewable resources, but especially for crude oil. The main reason for that is the knowledge
-of the total existing resource. In the case of crude oil, oil reserves are considered the amount of technically and
-economically recoverable oil. The total estimated amount in a reservoir is called oil in place, and only a fraction of this
-is considered as reserve. Thus, through the evolution of technology and demand, more reservoirs are discovered and
-larger fraction of the existing reservoirs is registered as reserve.
-In order to quantify the cost increase, we could consider a simplified problem. We define a fictitious energy
-source with reserve     1 1 R  F ,  2040, s  25  F  1. We assume the knowledge of two more reservoirs
-that each adds 20% to the total reserve. Furthermore, the associated costs per unit are: C1=1, C2= 1.2 and C3= 1.4.
-The objective of the problem is to maintain a stable production growth in order to meet the energy demands, and
-predict the instant extraction cost.
-In order to maintain a stable production growth, the solution is to align the production curves in order for all
-three inflection points to be tangent to the slope that defines stable production growth, as it is illustrated in Figure 3.
-Thus     2 F x 1.2F ,  2050, s  25 , and     3 F x 1.4F ,  2062, s  25 . Finally, (2) illustrates
-the evolution of the resource cost per unit in reference to the inflection points (x1=1990, x2=2026, x3=2043) as:
-© 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
-permitted without ASHRAE's prior written permission.
+
+
+
  
       
  
@@ -922,6 +964,19 @@ US DoE. Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S
         Additional reproduction, distribution, or transmission in either print or digital form 
         is not permitted without ASHRAE's or the author's prior written permission. 
       </p>
+
+      <p>Powered by 
+        <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3.CSS</a> 
+        and 
+        <a href="https://www.mathjax.org">
+          <img title="Powered by MathJax"
+            src="https://www.mathjax.org/badge/badge-square-2.png"
+            border="0" alt="Powered by MathJax" />
+        </a>
+
+      </p>
+
+      
 
     </footer>
     
