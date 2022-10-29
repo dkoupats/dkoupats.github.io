@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <style>
     body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </style>
@@ -33,23 +34,28 @@
         <div class="w3-col l8 s12">
           
           <!-- Blog entry -->
-          <div class="w3-card-4 w3-margin w3-white" id="blog1">
+          <div class="w3-card-4 w3-margin w3-white" id="feat-blog">
             <img src="/images/woods.jpg" alt="Nature" style="width:100%">
             <div class="w3-container">
-              <h3 id="blog1-title"><b></b></h3>
-              <h5>Title description, <span class="w3-opacity">April 7, 2014</span></h5>
+              <h3 id="feat-blog-title"><b></b></h3>
+              <h5>
+                Posted on 
+                <span class="w3-opacity" id="feat-blog-date"></span>
+                by <span class="w3-opacity" id="feat-blog-author"></span>
+              </h5>
             </div>
 
-            <div class="w3-container">
-              <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. 
-                Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. 
-                Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, 
-                ultricies congue gravida diam non fringilla.
-            </p>
+            <div class="w3-container" >
+              <p id="feat-blog-abstract"></p>
 
             <div class="w3-row">
               <div class="w3-col m8 s12">
-                <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                <p>
+                  <button class="w3-button w3-padding-large w3-white w3-border" 
+                    id="feat-blog-more">
+                    <b>READ MORE »</b>
+                  </button>
+                </p>
               </div>
               <div class="w3-col m4 w3-hide-small">
                 <p><span class="w3-padding-large w3-right">
@@ -58,71 +64,147 @@
                 </p>
               </div>
             </div>
+
+            <div class="" id="feat-blog-body">
+            </div>
+
           </div>
+          <hr>
+
+          <script>
+
+            /* const featured = JSON.parse(
+              "https://my-json-server.typicode.com/dkoupats/jsondata/featuredpost/"
+            ); */
+
+            $(document).ready(function(){
+
+              $.ajax(
+                {
+                  url: "/posts/db.json"
+                  , success: function(result){
+                    console.log(result);
+                    $("#feat-blog-title")
+                      .text( result.featuredpost.title );
+                    
+                    const date = new Date( result.featuredpost.date );
+                    const month = [
+                      "January", "February", "March", "April"
+                      , "May", "June", "July", "August"
+                      , "September", "October", "November", "December"
+                    ];
+
+                    $("#feat-blog-date")
+                      .text(
+                        month[date.getMonth()] + ' '
+                         + date.getDate() + ', ' 
+                         + date.getFullYear()
+                      );
+                    
+                    $("#feat-blog-author")
+                      .text( result.featuredpost.author );
+
+                    $("#feat-blog-abstract")
+                      .text(JSON.stringify(result.featuredpost.abstract));
+                    
+                    $("#feat-blog-more").click("slow", function(){
+                      for (let n = 0; n < result.featuredpost.body.length; n++) {
+
+                        $("#feat-blog-body")
+                        .add("p #para")
+                        .text( result.featuredpost.body[n] );
+
+                      }
+                      $("#feat-blog-body").slideToggle("slow");
+                    });
+
+                  }
+                }
+              );
+                  
+            });
+
+          </script>
+          
+
+          <!-- Blog entry -->
+          <div class="w3-card-4 w3-margin w3-white" id="blog0">
+            <img src="/images/bridge.jpg" alt="Norway" style="width:100%">
+            <div class="w3-container">
+              <h3 id="blog0-title"><b></b></h3>
+              <h5>
+                Posted on 
+                <span class="w3-opacity" id="blog0-date"></span>
+                by <span class="w3-opacity" id="blog0-author"></span>
+              </h5>
+            </div>
+
+            <div class="w3-container">
+              <p id="blog0-abstract"></p>
+              
+              <div class="w3-row">
+                <div class="w3-col m8 s12">
+                  <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                </div>
+                <div class="w3-col m4 w3-hide-small">
+                  <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
 
           <script>
 
             $(document).ready(function(){
 
-              $("#blog1-title").load("FirstArticle.txt").$("#title");
+              $.ajax(
+                {
+                  url: "/posts/db.json"
+                  , success: function(result){
+                    $("#blog0-title")
+                      .text( result.posts[0].title );
+                    
+                    const date = new Date( result.posts[0].date );
+                    const month = [
+                      "January", "February", "March", "April"
+                      , "May", "June", "July", "August"
+                      , "September", "October", "November", "December"
+                    ];
 
+                    $("#blog0-date")
+                      .text(
+                        month[date.getMonth()] + ' '
+                         + date.getDate() + ', ' 
+                         + date.getFullYear()
+                      );
+                    
+                    $("#blog0-author")
+                      .text( result.posts[0].author );
+
+                    $("#blog0-abstract")
+                      .text(JSON.stringify(result.posts[0].abstract));
+                    
+                    $("#feat-blog-more").click("slow", function(){
+                      for (let n = 0; n < result.featuredpost.body.length; n++) {
+
+                        $("#feat-blog-body")
+                        .add("p #para")
+                        .text( result.featuredpost.body[n] );
+
+                      }
+                      $("#feat-blog-body").slideToggle("slow");
+                    });
+
+                  }
+                }
+              );
+                  
             });
 
           </script>
-          <hr>
 
-          <!-- Blog entry -->
-          <div class="w3-card-4 w3-margin w3-white">
-            <img src="/images/bridge.jpg" alt="Norway" style="width:100%">
-            <div class="w3-container">
-              <h3><b>BLOG ENTRY</b></h3>
-              <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
-            </div>
-
-            <div class="w3-container">
-              <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. 
-                Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, 
-                ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. 
-                Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, 
-                porta lectus vitae, ultricies congue gravida diam non fringilla.
-              </p>
-              <div class="w3-row">
-                <div class="w3-col m8 s12">
-                  <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
-                </div>
-                <div class="w3-col m4 w3-hide-small">
-                  <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr>
-
-          <!-- Blog entry -->
-          <div class="w3-card-4 w3-margin w3-white">
-            <img src="/images/bridge.jpg" alt="Norway" style="width:100%">
-            <div class="w3-container">
-              <h3><b>BLOG ENTRY</b></h3>
-              <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
-            </div>
-
-            <div class="w3-container">
-              <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. 
-                Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, 
-                ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. 
-                Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, 
-                porta lectus vitae, ultricies congue gravida diam non fringilla.
-              </p>
-              <div class="w3-row">
-                <div class="w3-col m8 s12">
-                  <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
-                </div>
-                <div class="w3-col m4 w3-hide-small">
-                  <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
         </div><!-- END BLOG ENTRIES -->
 
@@ -136,7 +218,7 @@
             <div class="w3-container w3-white">
               <h4><b>Dimitris Koupatsiaris</b></h4>
               <p>
-                After a career as a Naval Engineer, I decided to tackle the fields of Data Science and Web Development. 
+                After a career as a Naval Engineer, I decided to address the fields of Data Science and Web Development. 
               </p>
             </div>
           </div>
@@ -150,24 +232,24 @@
 
             <ul class="w3-ul w3-hoverable w3-white">
               <li class="w3-padding-16">
-                <img src="/images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <img src="/images/logo_ashrae.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
                 <span class="w3-large">Lorem</span>
                 <br>
                 <span>Sed mattis nunc</span>
               </li>
               <li class="w3-padding-16">
-                <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <img src="/images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
                 <span class="w3-large">Ipsum</span>
                 <br>
                 <span>Praes tinci sed</span>
               </li>
               <li class="w3-padding-16">
-                <img src="/w3images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <img src="/images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
                 <span class="w3-large">Dorum</span><br>
                 <span>Ultricies congue</span>
               </li>
               <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                <img src="/w3images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                <img src="/images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
                 <span class="w3-large">Mingsum</span>
                 <br>
                 <span>Lorem ipsum dipsum</span>

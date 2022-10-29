@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- W3 CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- W3 JavaScript -->
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+    <!--<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
+
+    <!-- Plotly JS -->
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    
+    <style>
+      body {
+        font-family: 'EB Garamond', serif;
+        line-height: 1.5;
+        font-size: 18px;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        font-family: 'Jost', sans-serif;
+        font-weight: bold;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+    <title>Energy Security in the Built Environment</title>
+  </head>
+
+  <body class="w3-container w3-sand">
+
+    <header>
+
+      <h1 class="">Energy Security in the Built Environment</h1>
+
+      <div id="author">
+        <details>
+          <p><b><summary>Dimitrios Koupatsiaris</summary></b></p>
+          <p>Dimitrios Koupatsiaris is an Officer (Engineer) with the Hellenic Navy, Greece, 
+            holding the rank of Commander, currently posted in NATO HQ JFC Brunssum. 
+            None of the contents of this paper are endorsed, neither form the Hellenic Navy, 
+            nor NATO.</p>
+        </details>
+
+        <details>
+          <p class="w3-small"><em><summary>Member ASHRAE</summary></em></p>          
+          <p>&copy 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
+            permitted without ASHRAE's prior written permission.</p>
+        </details>
+        
+      </div>
+    
+    </header>
+
+    <section id="abstract">
+      <h4><b>ABSTRACT</b></h4>
+      <p><em>
+        The preservation and expansion of natural resources has been a major concern from early historic years. 
+        From the industrial age however, energy natural resources received top priority at the cost of increased vulnerability to interruptions of energy supply. 
+        Especially during the last half century, the world witnessed energy crises with global impact and increase of energy costs. 
+        Recent energy crises highlighted the need for closer cooperation between sovereign nations and international organizations in order to avoid them in the future, 
+        or at least to mitigate their consequences. 
+        The concept of energy security emerged out of this process, and until recently it has been the focus of researchers in the realms of strategic planning, 
+        political relations and policy making in the energy sector. 
+        Energy security addresses three problems: availability of energy sources, uninterrupted flow of energy and affordable prices. 
+      </em></p>
+      <p><em>
+        The first deals with the selection of an energy source or a mixture of energy sources for which the time required for their depletion is as distant as possible, 
+        and as such it involves long-term prediction or minimization of the probability of long-term shortage. 
+      </em></p>
+      <p><em>
+        The second deals with forming the provisions that secure an uninterrupted energy flow, 
+        and as such it involves minimization of the probability of short-term shortage. 
+      </em></p>
+      <p><em>
+        Finally, the third problem deals with measures to avoid high energy costs that may constraint further operations. 
+      </em></p>
+      <p><em>
+        The selection of energy sources is usually based on current pricing and legislating restrictions during the design phase of a project, 
+        while the energy cost is chosen as the minimum allowed by the imposed restrictions. 
+        Energy flow interruptions are mitigated according to the maximum shortage allowed by legislature or industry standards for each sub-system. 
+        The cost and availability of different sources of energy change during the project life cycle, 
+        while solutions that mitigate short-term interruptions fail to prove cost effective. 
+      </em></p>
+      <p><em>        
+        The introduction of a risk management process could help avoid unpleasant consequences, or predict them. 
+        The aim of this paper is to illustrate that energy security is a risk management problem, 
+        and as such it can be applied from large to small scale of structure manufacturing and operations, 
+        taking into account the long-term life cycle of an energy demanding structure. 
+        From this perspective, it can be applied both in the design phase as well as the operational use of all structures 
+        and processes for which energy consumption constitutes a significant percentage of their operational life cycle cost.
+      </em></p>      
+    </section>
+      
+    <section id="intro">
+      <h2><b>INTRODUCTION</b></h2>
+      <p>One definition of energy security is from the International Energy Agency, 
+        which states that it is the uninterrupted availability of energy sources at an affordable price, both in short-term as well as in long-term. 
+        Long-term energy security mainly deals with timely investments to supply energy in line with economic developments and environmental needs, 
+        while short-term energy security focuses on the ability of the energy system to react promptly to sudden changes in the supply-demand balance. 
+        Energy security was the principle reason for founding IEA, as it was formed in response to the 1973 oil crisis. 
+        However, between 1973 and 2014 the spectrum of the issues that energy security consists of has been broadened, 
+        at it is illustrated in the timeline of (IEA-Pol 2014). Today IEA's objectives are as follows:
+      </p>
+
+      <dl>
+        <dt><em>Energy security</em></dt>
+        <dd>To secure reliable access to supplies of all forms of energy, 
+          including oil, natural gas, electricity, coal, nuclear energy and renewables. 
+        </dd>
+
+        <dt>Environmental protection</dt>
+        <dd>To include a particular focus on reducing greenhouse gas emissions
+          - especially CO2- which lead to climate change.
+        </dd>
+
+        <dt>Sustainable economic development</dt>
+        <dd>Sustainable economic development both relies on and contributes to long-term energy security.
+        </dd>
+
+        <dt>Response to market disruptions</dt>
+        <dd>Prompt and effective response to market disruptions.</dd>
+
+        <dt>Energy Efficiency</dt>
+        <dd>Improvement of energy efficiency.</dd>
+
+        <dt>Low-Carbon Technologies</dt>
+        <dd>Work to deploy low-carbon technologies.</dd>
+
+        <dt>International Cooperation</dt>
+        <dd>Seek global solutions by increasing cooperation with all countries 
+          outside the OECD.
+        </dd>      
+      
+      </dl>
+
+      <p>
+        It is worth noting that the energy-related policies of the U.S.A. and the E.U. 
+        (<a href="#ref-US-WH-2013"><cite>US White House 2013</cite></a>) 
+        and (<a href="#ref-EU-Strat-2014"><cite>EU-Strat 2014</cite></a>), 
+        although they adopt different strategies, reflect the above listed goals.      
+      </p>
+
+      <p>
+        It is evident that energy security is a pivotal factor in the current and future energy policy making, 
+        together with environmental protection and reduction of greenhouse gases. 
+        Stated in simpler terms, we can say that in order to achieve energy security, 
+        we need robustness to short-term disruptions, 
+        reliable and efficient short and long-term system all the way from supply to power generation, 
+        and diversity in energy sources to mitigate long-term high cost. 
+      </p>
+
+    </section>
+
+
+    <section id="small-scale">
+      <h2><b>ENERGY SECURITY IN SMALL SCALE</b></h2>
+      <p>
+        If the global energy network is observed as a system, 
+        it consists of many interacting subsystems in smaller scales; 
+        therefore it is interesting to investigate to what degree the principles of large scale apply to smaller scales as well. 
+        The focus will be on structures/systems that are complex and complete technological products 
+        for which energy consumption in the form of fuel or energy source is a considerable fraction of their life cost, 
+        and when grouped they form major sectors in the global energy map. 
+        To be more specific, the focus will be on buildings (residential, office or industrial) and vehicles (automobiles, rail, ships and aircraft), 
+        since they are designed and constructed with a life span of at least two decades, 
+        and the process of consuming energy is part of their core function. 
+      </p>
+
+      <p>
+        Robustness to short-term disruptions in various degrees is commonplace in the majority of structures. 
+        Just a few examples are backup generators in buildings, battery assisted uninterrupted power supplies (UPS), 
+        switchboard change-over switches between alternative electric power supplies from the grid, 
+        dual and backup supplies to critical systems (propulsion, power supply, HVAC, payload) 
+        which are commonplace in naval architecture, overhead design in marine power generation and propulsion (also to increase maintainability), 
+        and similar and even more elaborate solutions in aviation industry to also meet the aviation safety requirements. 
+
+        In addition, robustness to short-term disruptions will also benefit with the implementation of a number of technology initiatives 
+        (such as the smart grid, the total electric ship and others) which are underway. 
+      </p>
+
+      <p>
+        Efficiency is a driving force for every design engineer. 
+        Fuel efficiency has been among the main design objectives in naval architecture for many years now, 
+        however the automotive and aviation industries followed suit only during the last two decades, 
+        also urged by state policies, mainly due to the fact that it has not has not been among the primary 
+        customer demands until recently. 
+        Similar advances were achieved in building design, especially in the domain of HVAC efficiency, 
+        a field in which ASHRAE is a champion. 
+        In addition, there have been many advances from corporations in the area of fuel supply chain towards 
+        optimizing, which is mainly an administrative effort. 
+      </p>
+
+      <p>
+        In order to attempt an analysis in terms of energy sources diversity, 
+        it is worth taking a closer look at <a href="#figure1">Figure 1<cite></cite></a>, 
+        which is based on data from (IEA-Stats 2014). 
+        From 1973 to 2012 the global demand for energy increased from 3343 Mtoe to 6644 Mtoe, 
+        almost doubling (1 Mtoe= 106 tons of oil equivalent- toe, 1 toe= 107 kcal), 
+        while the share of crude oil declined from 67% of total consumption to 55%, 
+        the share of natural gas increased slightly from 19.5% to 20.5%, 
+        and the share of electricity increased from 13% to 24.5%. 
+        In the sector that includes energy for residential and commercial buildings, 
+        the share for crude oil was reduced from 53.5% to just over 22%, 
+        and the gap was filled mainly by electricity. 
+        On the other hand, the share of crude oil in the transportation sector remained almost equally strong to over 95%, 
+        making crude oil and the associated products almost the exclusive energy source for transportation. 
+      </p>
+
+      <details>
+        <p><summary>Electricity is an indirect, non-storable energy source.</summary></p>
+        <p>Currently, there is no mature technology that allows large scale storage of electric energy for large period of time.</p>
+      </details>
+
+      <p>
+        Between 1973 and 2012, the primary energy source remains the use of coal with increased share of 40.4%. 
+        The share of crude oil was reduced from 25% to 5%, and the gap was filled with increased use of natural gas, 
+        nuclear power and renewable energy sources. 
+        It is worth noting the impressive increase in electricity generation from renewable energy sources (almost 3000%) 
+        that took place especially after the year 2000. 
+        In conclusion, there is a tendency for the electricity production sector to remove crude oil from the primary energy sources. 
+      </p>
+
+      <div class="w3-display-container" style="height:500px;">
+        <figure class="w3-middle" id="figure1">
+          <div id="cons-plot" class="w3-middle" style="width:600px; height:400px;">
+          </div>
+          <figcaption>
+            Figure 1. 1973 and 2012 shares of world energy consumption <br>
+            (Other includes agriculture, commercial and public services, residential etc.), 
+            from (<a href="#ref-IEA-Stats-2014"><cite>IEA-Stats 2014</cite></a>). 
+          </figcaption>
+        </figure>
+      </div>
+
+      <script>
+        consPlot = document.getElementById('cons-plot');
+
+        var trace1 = {
+          x: [ 
+            '1973-Transport', '2012-Transport', '1973-Industry', '2012-Industry'
+            , '1973-Other', '2012-Other', '1973-Non energy use', '2012-Non energy use'
+          ]
+          , y: [ 1022, 2326, 448, 310, 520, 431, 261, 584 ]
+          , name: 'Crude Oil'
+          , type: 'bar'
+        };
+
+        var trace2 = {
+          x: [ 
+            '1973-Transport', '2012-Transport', '1973-Industry', '2012-Industry'
+            , '1973-Other', '2012-Other', '1973-Non energy use', '2012-Non energy use'
+          ]
+          , y: [ 18, 90, 357, 499, 259, 593, 18, 184 ]
+          , name: 'Natural Gas'
+          , type: 'bar'
+        };
+
+        var trace3 = {
+          x: [ 
+            '1973-Transport', '2012-Transport', '1973-Industry', '2012-Industry'
+            , '1973-Other', '2012-Other', '1973-Non energy use', '2012-Non energy use'
+          ]
+          , y: [ 11, 26, 235, 688, 194, 912, 0, 0 ]
+          , name: 'Electricity'
+          , type: 'bar'
+        };
+
+        var dataPlot = [trace1, trace2, trace3];
+
+        var layout = {
+          yaxis: {
+            title: 'Mtoe'
+            , titlefont: {
+              size: 16
+              , color: 'rgb(107, 107, 107)'
+            }
+          }
+          , barmode: 'stack'
+        };
+        
+        Plotly.newPlot( consPlot, dataPlot, layout);
+      
+      </script>
+
+      <div class="w3-container">
+        <table class="w3-table-all" id="table1">
+          <caption>Table 1. 1973 and 2012 shares of world energy consumption in Mtoe (1 Mtoe= 106 tons of oil equivalent- toe, 1 toe= 107 kcal)</caption>
+          <tr class="w3-deep-orange">
+            <th>Activity-Year</th>
+            <th>Crude Oil</th>
+            <th>Crude Oil Increase %</th>
+            <th>Natural Gas</th>
+            <th>Natural Gas Increase %</th>
+            <th>Electricity</th>
+            <th>Electricity Increase %</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <th>1973-Transport</th>
+            <td id="73-tr-oil">1022</td>
+            <td id="73-tr-oil-pc"></td>
+            <td id="73-tr-gas">18</td>
+            <td id="73-tr-gas-pc"></td>
+            <td id="73-tr-elec">11</td>
+            <td id="73-tr-elec-pc"></td>
+            <td id="73-tr-tot"></td>
+          </tr>
+          <tr>
+            <th>2012-Transport</th>
+            <td id="12-tr-oil">2326</td>
+            <td id="12-tr-oil-pc"></td>
+            <td id="12-tr-gas">90</td>
+            <td id="12-tr-gas-pc"></td>
+            <td id="12-tr-elec">26</td>
+            <td id="12-tr-elec-pc"></td>
+            <td id="12-tr-tot"></td>
+          </tr>
+
+          <th>1973-Industry</th>
+            <td id="73-in-oil">448</td>
+            <td id="73-in-oil-pc"></td>
+            <td id="73-in-gas">357</td>
+            <td id="73-in-gas-pc"></td>
+            <td id="73-in-elec">235</td>
+            <td id="73-in-elec-pc"></td>
+            <td id="73-in-tot"></td>
+          </tr>
+          <tr>
+            <th>2012-Industry</th>
+            <td id="12-in-oil">310</td>
+            <td id="12-in-oil-pc"></td>
+            <td id="12-in-gas">499</td>
+            <td id="12-in-gas-pc"></td>
+            <td id="12-in-elec">688</td>
+            <td id="12-in-elec-pc"></td>
+            <td id="12-in-tot"></td>
+          </tr>
+
+          <th>1973-Other</th>
+            <td id="73-ot-oil">520</td>
+            <td id="73-ot-oil-pc"></td>
+            <td id="73-ot-gas">259</td>
+            <td id="73-ot-gas-pc"></td>
+            <td id="73-ot-elec">194</td>
+            <td id="73-ot-elec-pc"></td>
+            <td id="73-ot-tot"></td>
+          </tr>
+          <tr>
+            <th>2012-Other</th>
+            <td id="12-ot-oil">431</td>
+            <td id="12-ot-oil-pc"></td>
+            <td id="12-ot-gas">593</td>
+            <td id="12-ot-gas-pc"></td>
+            <td id="12-ot-elec">912</td>
+            <td id="12-ot-elec-pc"></td>
+            <td id="12-ot-tot"></td>
+          </tr>
+
+          <th>1973-Non energy use</th>
+            <td id="73-non-oil">261</td>
+            <td id="73-non-oil-pc"></td>
+            <td id="73-non-gas">18</td>
+            <td id="73-non-gas-pc"></td>
+            <td id="73-non-elec">0</td>
+            <td id="73-non-elec-pc"></td>
+            <td id="73-non-tot"></td>
+          </tr>
+          <tr>
+            <th>2012-Non energy use</th>
+            <td id="12-non-oil">584</td>
+            <td id="12-non-oil-pc"></td>
+            <td id="12-non-gas">184</td>
+            <td id="12-non-gas-pc"></td>
+            <td id="12-non-elec">0</td>
+            <td id="12-non-elec-pc"></td>
+            <td id="12-non-tot"></td>
+          </tr>
+
+        </table>
+      </div>
+      
+      <script>
+        // Transport
+        let oil73tr = Number(document.getElementById("73-tr-oil").innerHTML);
+        let gas73tr = Number(document.getElementById("73-tr-gas").innerHTML);
+        let elec73tr = Number(document.getElementById("73-tr-elec").innerHTML);
+        let sum73tr = oil73tr + gas73tr + elec73tr;
+        document.getElementById("73-tr-tot").innerHTML = sum73tr;
+
+        let oil12tr = Number(document.getElementById("12-tr-oil").innerHTML);
+        let gas12tr = Number(document.getElementById("12-tr-gas").innerHTML);
+        let elec12tr = Number(document.getElementById("12-tr-elec").innerHTML);
+        let sum12tr = oil12tr + gas12tr + elec12tr;
+        document.getElementById("12-tr-tot").innerHTML = sum12tr;
+        document.getElementById("12-tr-oil-pc").innerHTML = Math.round(100*(oil12tr-oil73tr)/oil12tr) + "%";
+        document.getElementById("12-tr-gas-pc").innerHTML = Math.round(100*(gas12tr-gas73tr)/gas12tr) + "%";
+        document.getElementById("12-tr-elec-pc").innerHTML = Math.round(100*(elec12tr-elec73tr)/elec12tr) + "%";
+
+        // Industry
+        let oil73in = Number(document.getElementById("73-in-oil").innerHTML);
+        let gas73in = Number(document.getElementById("73-in-gas").innerHTML);
+        let elec73in = Number(document.getElementById("73-in-elec").innerHTML);
+        let sum73in = oil73in + gas73in + elec73in;
+        document.getElementById("73-in-tot").innerHTML = sum73in;
+        document.getElementById("73-in-oil-pc").innerHTML = Math.round(100*oil73in/sum73in) + "%";
+        document.getElementById("73-in-gas-pc").innerHTML = Math.round(100*gas73in/sum73in) + "%";
+        document.getElementById("73-in-elec-pc").innerHTML = Math.round(100*elec73in/sum73in) + "%";
+
+        let oil12in = Number(document.getElementById("12-in-oil").innerHTML);
+        let gas12in = Number(document.getElementById("12-in-gas").innerHTML);
+        let elec12in = Number(document.getElementById("12-in-elec").innerHTML);
+        let sum12in = oil12in + gas12in + elec12in;
+        document.getElementById("12-in-tot").innerHTML = sum12tr;
+        document.getElementById("12-in-oil-pc").innerHTML = Math.round(100*oil12in/sum12in) + "%";
+        document.getElementById("12-in-gas-pc").innerHTML = Math.round(100*gas12in/sum12in) + "%";
+        document.getElementById("12-in-elec-pc").innerHTML = Math.round(100*elec12in/sum12in) + "%";
+
+        // Other
+        let oil73ot = Number(document.getElementById("73-ot-oil").innerHTML);
+        let gas73ot = Number(document.getElementById("73-ot-gas").innerHTML);
+        let elec73ot = Number(document.getElementById("73-ot-elec").innerHTML);
+        let sum73ot = oil73ot + gas73ot + elec73ot;
+        document.getElementById("73-ot-tot").innerHTML = sum73ot;
+        document.getElementById("73-ot-oil-pc").innerHTML = Math.round(100*oil73ot/sum73ot) + "%";
+        document.getElementById("73-ot-gas-pc").innerHTML = Math.round(100*gas73ot/sum73ot) + "%";
+        document.getElementById("73-ot-elec-pc").innerHTML = Math.round(100*elec73ot/sum73ot) + "%";
+
+        let oil12ot = Number(document.getElementById("12-ot-oil").innerHTML);
+        let gas12ot = Number(document.getElementById("12-ot-gas").innerHTML);
+        let elec12ot = Number(document.getElementById("12-ot-elec").innerHTML);
+        let sum12ot = oil12ot + gas12ot + elec12ot;
+        document.getElementById("12-ot-tot").innerHTML = sum12ot;
+        document.getElementById("12-ot-oil-pc").innerHTML = Math.round(100*oil12ot/sum12ot) + "%";
+        document.getElementById("12-ot-gas-pc").innerHTML = Math.round(100*gas12ot/sum12ot) + "%";
+        document.getElementById("12-ot-elec-pc").innerHTML = Math.round(100*elec12ot/sum12ot) + "%";
+
+        // Non-Energy
+        let oil73non = Number(document.getElementById("73-non-oil").innerHTML);
+        let gas73non = Number(document.getElementById("73-non-gas").innerHTML);
+        let elec73non = Number(document.getElementById("73-non-elec").innerHTML);
+        let sum73non = oil73non + gas73non + elec73non;
+        document.getElementById("73-non-tot").innerHTML = sum73non;
+        document.getElementById("73-non-oil-pc").innerHTML = Math.round(100*oil73non/sum73non) + "%";
+        document.getElementById("73-non-gas-pc").innerHTML = Math.round(100*gas73non/sum73non) + "%";
+        document.getElementById("73-non-elec-pc").innerHTML = Math.round(100*elec73non/sum73non) + "%";
+
+        let oil12non = Number(document.getElementById("12-non-oil").innerHTML);
+        let gas12non = Number(document.getElementById("12-non-gas").innerHTML);
+        let elec12non = Number(document.getElementById("12-non-elec").innerHTML);
+        let sum12non = oil12non + gas12non + elec12non;
+        document.getElementById("12-non-tot").innerHTML = sum12non;
+        document.getElementById("12-non-oil-pc").innerHTML = Math.round(100*oil12non/sum12non) + "%";
+        document.getElementById("12-non-gas-pc").innerHTML = Math.round(100*gas12non/sum12non) + "%";
+        document.getElementById("12-non-elec-pc").innerHTML = Math.round(100*elec12non/sum12non) + "%";
+
+      </script>
+
+      
+
+
+
+
+
+1973-Total
+2012-Total
+
+
+
+      
+      
+
+
+
+
+
+
+      
+
+      <p>
+        It is worth noting that the energy-related policies of the U.S.A. and the E.U. 
+        (<a href="#ref-US-WH-2013"><cite>US White House 2013</cite></a>) 
+        and (<a href="#ref-EU-Strat-2014"><cite>EU-Strat 2014</cite></a>), 
+        although they adopt different strategies, reflect the above listed goals.      
+      </p>
+
+      <p>
+        It is evident that energy security is a pivotal factor in the current and future energy policy making, 
+        together with environmental protection and reduction of greenhouse gases. 
+        Stated in simpler terms, we can say that in order to achieve energy security, 
+        we need robustness to short-term disruptions, 
+        reliable and efficient short and long-term system all the way from supply to power generation, 
+        and diversity in energy sources to mitigate long-term high cost. 
+      </p>
+
+
+
+
+
+
+
+
+
+Thus, there is a global tendency for reducing dependence on crude oil in most energy sectors (industry, buildings and electricity generation), which is also in conjunction with IEA’s recommendations to reduce carbon emissions. The exception is the transportation sector, where dependence on crude oil remains almost absolute. The transportation sector consists in broad terms of the automotive, maritime shipping, aviation, and railroad industries. The railroad in particular, as a track-based transport mode and in position to affordably access the power grid, is experiencing a global shift towards electrification, which is currently the most efficient means of traction as well.
+
+
+One could wonder why there has been no energy source shift in the automotive, maritime shipping, and aviation industries. Although there are many examples of experimental or research vehicles in all the above industries that use alternative energy sources, however they did not, up to now, meet wider acceptance. This is not due to any notion that these industries are not open to innovation, since progress in the 20th century was mainly connected with the use of liquid petroleum-based fuels providing power to combustion engines. Furthermore, crude oil based fuels combine an unmatched set of properties, such as: specific energy, energy density, handling safety, usability, efficiency, availability, cost, and others. Thus, the process of replacing crude oil totally or in part will put at risk this set of
+
+Mtoe 
+properties. An obvious question to ask would be for what reason such a risk should be accepted.
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+2000’S ENERGY CRISIS AND THE CONNECTION TO PEAK OIL
+Many analysts argue that the collection of energy crises during the first decade of the 21st century form one crisis, usually called the 2000’s energy crisis. However there is no consensus on the root cause of this crisis, thus a number of factors have been indicated, including the falling value of USD, reports from U.S. DoE showing decline in crude oil reserves, Middle East tensions, oil price speculations, and peak oil. From all the factors above, peak oil (also applies to natural gas, coal, nuclear fuel and all non-renewable energy sources) provides a theoretical framework for the long term scarcity of non-renewable fuels, that is independent from the short-term effects of energy crises.
+An example of the long-term trend of growing fuel prices is provided by Figure 2, which illustrates the annual average price per barrel of crude oil in the U.S. market between 1946 and 2014. Apart from the reflection of energy crises in the price, there is a clear overall trend, especially after inflation adjustment. Therefore, oil crises provide short-to-medium term effects only, while the overall trend is for the price to increase independently.
+Figure 2 Annual Average of US Crude Oil Prices (in $/Barrel). Inflation is adjusted to November 2014, from (InflationData 2015)
+Peak oil, based on the Hubbert peak theory (Hubbert 1956), is being seriously considered, leading to a number of reports produced to examine the consequences of its effects. One of the most known is the Hirsch report, which examined the time frame for the occurrence of peak oil, the necessary mitigating actions, and the likely impacts based on the timeliness of those actions, reaching a number of conclusions (Hirsch 2005), five of which are as follows:
+ When world oil peaking will occur is not known with certainty, but the fact that it will occur is. The study indicated that it will occur within 20 years.
+ Oil peaking will create a severe liquid fuels problem for the transportation sector, not an “energy crisis” in the usual sense that term has been used.
+ Peaking will result in dramatically higher oil prices, which will cause protracted economic hardship.
+ Mitigation will require a minimum of a decade of intense, expensive effort, because the scale of liquid fuels mitigation is inherently extremely large. Motor vehicles, aircraft, trains, and ships have no ready alternative to
+0,00
+20,00
+40,00
+60,00
+80,00
+100,00
+120,00
+Price [US$]
+Nominal Price
+Inflation Adjusted Price
+Poly. (Inflation Adjusted Price) © 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
+permitted without ASHRAE's prior written permission.
+liquid fuels.
+ Mitigating the peak oil presents a classic risk management problem.
+Hubbert Peak Theory
+The Hubbert peak theory is based on the observation that, in any finite geographical area the rate of
+production of any finite resource tends to follow a bell-shaped curve. The theory was initially developed, based on the
+data obtained on coal and crude oil, and the curve was mathematically defined later as the probability density function
+of the logistic distribution, depicted in (1). The theory was based on the observations of production data for coal and
+crude oil from confined geographical regions and identified two key points. The first was an inflection point, the point
+from which the rate of increase in production stabilizes and after which the production increase rate declines. The
+second was the point at which production increase diminishes, and was named the peak point. The principle of the
+theory is that once the inflection point is identified, the peak point can be predicted based on the associated
+production data.
+    2
+1
+; , ; ,
+1 1
+x
+s
+x
+x
+s
+s
+e
+f x s F x s
+s e e
+
+
+
+ 
+
+
+
+ 
+
+  
+     
+ 
+(1)
+where
+f(x) the instant (annual) resource production, where x is the time scale
+F(x) the cumulative resource production up to time x (extracted reserve)
+μ the peak point, or the year that the resource production will reach its peak
+2 2 2
+2
+2
+3
+3
+s
+s
+ 
+
+
+   In probability theory, variance (σ2) measures how far a set of numbers is spread out.
+The theory was criticized by many researchers for incorrect prediction and subsequent adjustments of the
+peak time for various non-renewable resources, but especially for crude oil. The main reason for that is the knowledge
+of the total existing resource. In the case of crude oil, oil reserves are considered the amount of technically and
+economically recoverable oil. The total estimated amount in a reservoir is called oil in place, and only a fraction of this
+is considered as reserve. Thus, through the evolution of technology and demand, more reservoirs are discovered and
+larger fraction of the existing reservoirs is registered as reserve.
+In order to quantify the cost increase, we could consider a simplified problem. We define a fictitious energy
+source with reserve     1 1 R  F ,  2040, s  25  F  1. We assume the knowledge of two more reservoirs
+that each adds 20% to the total reserve. Furthermore, the associated costs per unit are: C1=1, C2= 1.2 and C3= 1.4.
+The objective of the problem is to maintain a stable production growth in order to meet the energy demands, and
+predict the instant extraction cost.
+In order to maintain a stable production growth, the solution is to align the production curves in order for all
+three inflection points to be tangent to the slope that defines stable production growth, as it is illustrated in Figure 3.
+Thus     2 F x 1.2F ,  2050, s  25 , and     3 F x 1.4F ,  2062, s  25 . Finally, (2) illustrates
+the evolution of the resource cost per unit in reference to the inflection points (x1=1990, x2=2026, x3=2043) as:
+© 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
+permitted without ASHRAE's prior written permission.
+ 
+      
+ 
+             
+ 
+1 2 1
+2
+1 2 1 3 1 2
+3
+1 , 1990
+1 1.2
+,1990 2026
+1 1.2 1.4
+, 2026
+x
+f x f x f x
+C x x
+f x
+f x f x f x f x f x f x
+x
+f x
+
+ 
+
+
+    
+   
+
+
+       
+ 
+
+(2)
+The cost points C(1990), C(2026), and C(2043) constitute a geometric progression with ratio r=1.2. Although
+this scenario is simplistic, in a more generic case the progression will have the form 1, 1, n n n n C r C r n     . To
+summarize, the cost per unit of a resource, which is in the process of expanding the reserves to maintain a stable
+production growth, follows a geometric progression with ratio larger than 1.
+Figure 3 Subsequent Resource Curves that meet Stable Growth Demands
+In reality problems are more complicated, since cost estimates can be verified only after extraction
+commenced and matured, technology evolves and new methods reduce extraction cost, new networks reduce the
+transportation cost per unit, and many more factors formulate the final resource price as a commodity. However the
+principle remains the same, that if we know the extraction cost of the reservoirs of a finite resource, we can predict
+with high confidence the resource commodity price in the following years, which will resemble a polynomial growth
+curve. Thus, the knowledge of resource peaking time becomes less critical than the price evolution itself. The
+estimation of the price evolution can be used when calculating the life cycle cost of a system under design, and
+together with the severity that the price will cause in the system’s future operations, constitute a risk that has to be
+managed.
+OVERVIEW OF SYSTEMS ENGINEERING
+Systems engineering is an interdisciplinary field of engineering that focuses on how to design and manage
+complex engineering systems over their life cycles. As such, it is a methodical, disciplined approach for the design,
+realization, technical management, operations, and retirement of a system, (NASA/SP-6105 2007). Due to the fact
+0,00000
+0,00200
+0,00400
+0,00600
+0,00800
+0,01000
+0,01200
+0,01400
+0,01600
+0,01800
+1800 1850 1900 1950 2000 2050 2100 2150
+f1(x)
+Tangent to f1(x)
+f2(x)
+f3(x)
+
+
+that systems come at different complexities, a useful way of categorizing them is based on the number of parts, and in particular in 7 levels (MIT OCW 16.842 2009). Just as an overview of the functionality of the systems engineering (SE) “engine” that is applicable to all system levels, requirements flow down from higher to lower level, and realized products climb from lower to higher level. Although it is not the scope of this work to elaborate on the SE engine, a brief overview of the system design process, especially decision analysis and risk management, is useful.
+Decision analysis process offers techniques for modeling decision problems mathematically, and finding optimal decisions numerically. Decision models have the capacity for accepting and quantifying human subjective inputs, such as judgments of subject matter experts and preferences of decision makers. The problem is structured by identifying alternatives, one of which must be decided upon; possible events, one of which occurs thereafter; and outcomes, each of which results from a combination of decision and event. Typically, the application of decision analysis is needed when some of the following conditions are met: high stakes, complexity, uncertainty, multiple attributes, or diversity of stakeholders.
+The technical risk management process is defined as the joint probability function of 1- the probability that a program or project will experience an undesired effect, and 2- the probability of the consequences, impact or severity of the undesired event. The technical risk management process focuses on project objectives, bringing to bear an analytical basis for risk management decisions and the ensuing management activities, and a framework for dealing with uncertainty. The risk may be Programmatic Risk, Technical Risk, Cost Risk, or Schedule Risk.
+Oil Peak as Risk Affecting Life-Cycle Cost
+As described, the introduction of new technologies and techniques, including those that introduce renewable energy sources is considered during the system design process. However as already stated, the innovating technologies come with a risk that has to be mitigated, and if mitigation measures do not reduce the risk in an acceptable level, the risk is avoided and the new technology is not introduced. On the other hand, life cycle energy cost is computed based on estimations made by International Organizations, Governments or consultants. Such estimations are provided with a smooth (most of the times linear) evolution of fuel costs, and the estimates are considered by system designers with certainty, although they are the results of stochastic estimation. As a consequence, fuel cost is regarded as a deterministic risk-free factor that “plugs in” the life cycle estimation process with no risk management, although poor estimations of fuel cost have already had major impact on businesses and households in numerous occasions in recent years.
+The definition of risk in fuel price is the joint probability function of 1- the probability that the inflation-free fuel price will reach a certain level during a specific period during the system life and 2- the probability that this price will lead to the decision for the system to stop operations. By defining the above mentioned risk, two families of curves should be produced, one for the long-term trend, and one for the short-to-medium term disruptions. Each family should include at least 3 scenarios, the optimistic, the most probable, and the pessimistic. Then the risk should be included in the risk management and decision making processes, together with the risks of introducing new technologies. The aim of the proposal above is not to promote the use of renewable energy sources, but to evaluate two risks, that function contrary to each other, in the same process.
+CONCLUSIONS
+By transferring the principles of energy security from the international scale to the smaller scale of built environment (building, automotive, maritime shipping and aviation industries), it was observed not only that they can be applied, but they are actually in use, although with different naming conventions. However, the transportation sector is heavily (almost exclusively) dependent on crude oil, which is contrary to global trend and policies. A simplified example based on the Hubbert peak theory indicated that there is a non-trivial and computable risk to shut-down a system during operational life due to high energy cost.
+From all the systems that make up the transportation sector, ships combine a unique set of characteristics. © 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
+permitted without ASHRAE's prior written permission.
+Due to their nature, they combine the characteristics of residential buildings (crew accommodations), industrial buildings (propulsion and payload machinery), and utility grids coexisting in one platform. Thus, they provide the size and space for the introduction of new technologies without substantial compromise in their operational characteristics. From that aspect, ships allow the introduction of mixed blends of energy sources. A few examples could be mentioned such as, marine diesel combined with synthetic fuel, or solar energy, or wind energy, or wave power. This combination of energy sources in the same platform can permit further innovation towards increasing the footprint of renewable energy sources in the shipping industry as a whole. This sort of undertaking would be an unnecessary risk for both ship owners and shipbuilders alike, without the acknowledgement of the risk that the ship would have to stop operating due to high marine fuel oil price. This risk acts contrary to the risks of employing an untested, technologically immature, less efficient, or unverified energy source, hence an engineering trade-off should have to be acknowledged.
+Although the process of gradually shifting away non-renewable energy sources resembles at the first glance the historical shift from coal to fuel oil in the interwar period, under more careful consideration it resembles more the shift from sail to coal in the 19th century. This is due to the attribute that, just like the 19th century, the new and untested technology needs to work together with the safe and reliable technology, and probably the same process of technological innovation will be repeated. It seems like a historic irony to shift from renewable energy sources to fossil fuels and 200 years later to shift back, however it serves as a reminder that a technological solution, even if it remains unchallenged for a long time, is neither indisputable nor it necessarily meets the needs of the times.
+
+
+<section id="ref-section">
+  <h2><b>REFERENCES</b></h2>
+
+  <ul id="references">
+
+    <li>
+      <p id="ref-US-WH-2013"><em>US White House</em>
+        <a href="http://www.whitehouse.gov/sites/default/files/image/president27sclimateactionplan.pdf">
+           US Executive Office of the President of the United States of America, June 2013.
+        </a>
+      </p>
+    </li>
+
+    <li>
+      <p id="ref-EU-Strat-2014"><em>EU-Expl</em>
+        <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:52014DC0330">
+          COMMUNICATION FROM THE COMMISSION TO THE EUROPEAN PARLIAMENT AND THE COUNCIL European Energy Security Strategy, May 2014.
+        </a>
+      </p>
+    </li>
+
+    <li>
+      <p id="ref-IEA-Stats-2014"><em>IEA-Stats</em>
+        <a href="https://www.iea.org/reports/world-energy-outlook-2022">
+          2014 Key World Energy Statistics. Paris Cedex 15, France: IEA Publishing, 2014.
+        </a>
+      </p>
+    </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+
+
+
+EU-CSWD. EU SWD(2014) 330 final, Commission Staff Working Document: In-depth study of European Energy Security. Brussels: European Commission, July 2014.
+EU-En-Infr. Energy Infrastructure; Priorities for 2020 and Beyond- A Blueprint for an Integrated European Energy Network. Luxemburg: Publications Office of the European Union, 2011.
+
+EU-Fig. EU Key Figures for Energy. European Commission, Directorate for Energy, June 2011.
+Hirsch. Peaking of World Oil Production: Impacts, Mitigation, & Risk Management. Edited by R. L. Hirsch, R. Bezdek and R. Wendling. Washington, DC: US Department of Energy, 2005.
+Hubbert. "Nuclear Energy and the Fossil Fuels." Edited by M. K. Hubbert. Drilling and Production Practice (Shell Development Co., Exploration and Production Research Division.), 1956.
+IEA-Pol. Worldwide Engagement for Sustainable Energy Strategies. Paris Cedex 15, France: IEA Publishing, 2014.
+
+InflationData. InflationData.com. 2015. http://inflationdata.com/Inflation/Inflation_Rate/Historical_Oil_Prices_Chart.asp (accessed January 2015).
+MIT OCW 15.031J. "MIT OpenCourseWare." Richard Schmalenseeare. Spring 2012. http://ocw.mit.edu (accessed Jan 28, 2015).
+MIT OCW 16.842. "MIT OpenCourseWare." http://ocw.mit.edu. Olivier de Weck. Fall 2009. http://ocw.mit.edu (accessed Jan 25, 2015).
+NASA/SP-6105. NASA/SP-2007-6105 Rev1, Systems Engineering Handbook. Washington, DC: National Aeronautics and Space Administration, 2007.
+US DoE. Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S. Energy Information Administration, U.S. Department of Energy, April 2014.
+
+</section>
+
+
+
+
+    
+
+    <!-- Footer -->
+    <footer class="w3-container w3-light-grey w3-padding-32 w3-margin-top">
+
+      <p>
+        &copy; 2015 ASHRAE (www.ashrae.org). For personal use only. 
+        Additional reproduction, distribution, or transmission in either print or digital form 
+        is not permitted without ASHRAE's or the author's prior written permission. 
+      </p>
+
+    </footer>
+    
+    <script>
+    </script>
+
+  </body>
+
+</html>
