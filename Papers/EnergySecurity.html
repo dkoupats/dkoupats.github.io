@@ -57,6 +57,21 @@
         padding: 0;
       }
 
+      a#return:link, a#return:visited {
+        background-color: white;
+        color: black;
+        border: 2px solid green;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      a#return:hover, a#return:active {
+        background-color: green;
+        color: white;
+      }
+
     </style>
     <title>Energy Security in the Built Environment</title>
   </head>
@@ -65,7 +80,7 @@
 
     <header>
 
-      <h1 class="">Energy Security in the Built Environment</h1>
+      <h1 id="pub-title">Energy Security in the Built Environment</h1>
 
       <div id="author">
         <details>
@@ -88,7 +103,8 @@
         alt="Photo by Zbynek Burival
           , Published on January 17, 2018, 
           , Pump-jack mining crude oil with the sunset" 
-        style="width:100%">
+          class="w3-image"
+          id="image">
     
     </header>
 
@@ -671,11 +687,11 @@
 
 
       <p>
-        Peak oil, based on the Hubbert peak theory (Hubbert 1956), is being seriously considered, 
+        Peak oil, based on the Hubbert peak theory (<a href="#ref-Hubbert-1956"><cite>Hubbert 1956</cite></a>), is being seriously considered, 
         leading to a number of reports produced to examine the consequences of its effects. 
         One of the most known is the Hirsch report, which examined the time frame for the occurrence of peak oil, 
         the necessary mitigating actions, and the likely impacts based on the timeliness of those actions, 
-        reaching a number of conclusions (Hirsch 2005), five of which are as follows: 
+        reaching a number of conclusions (<a href="#ref-Hirsch-2005"><cite>Hirsch 2005</cite></a>), five of which are as follows: 
       </p>
 
       <ul>
@@ -752,7 +768,7 @@
           <dd>the cumulative resource production up to time x (extracted reserve)</dd>
           <dt>\( \mu \)</dt>
           <dd>the <strong>peak point</strong>, or the year that the resource production will reach its peak</dd>
-          <dt>\( \sigma^2 = { s^2 \cdot \pi^2 \over 3 } \)</dt>
+          <dt>\( \sigma^2 = \frac{ s^2 \cdot \pi^2 }{3} \)</dt>
           <dd>The standarrd deviation \( \sigma \) is the uncertainty of the time (year)
             when the oil peak will occur.
           </dd>
@@ -786,6 +802,20 @@
           (x1=1990, x2=2026, x3=2043) as:
         </p>
 
+        <p id="eq3">
+          \[ C(x) = 
+            \begin{cases}
+              1 & , x \lt 1990 \\ 
+              \frac{ 1 \cdot f_1(x) + 1.2 \cdot (f_2(x)-f_1(x)) }{f_2(x)} 
+              & , 1990 \leq x \leq 2026 \\ 
+              \frac{ 1 \cdot f_1(x) + 1.2 \cdot (f_2(x)-f_1(x)) + 1.4 \cdot (f_3(x)-f_2(x))-f_1(x)) }
+                {f_3(x)}  
+              & , x \geq 2026 
+            \end{cases} 
+
+          \]
+        </p>
+
 
       </section>
 
@@ -807,39 +837,6 @@
 
 
 
- 
-      
- 
-             
- 
-1 2 1
-2
-1 2 1 3 1 2
-3
-1 , 1990
-1 1.2
-,1990 2026
-1 1.2 1.4
-, 2026
-x
-f x f x f x
-C x x
-f x
-f x f x f x f x f x f x
-x
-f x
-
- 
-
-
-    
-   
-
-
-       
- 
-
-(2)
 The cost points C(1990), C(2026), and C(2043) constitute a geometric progression with ratio r=1.2. Although
 this scenario is simplistic, in a more generic case the progression will have the form 1, 1, n n n n C r C r n     . To
 summarize, the cost per unit of a resource, which is in the process of expanding the reserves to maintain a stable
@@ -925,6 +922,25 @@ Although the process of gradually shifting away non-renewable energy sources res
         </a>
       </p>
     </li>
+
+    <li>
+      <p id="ref-Hubbert-1956"><em>Hubbert 1956</em>
+        <a href="http://www.energycrisis.com/Hubbert/1956/1956.pdf">
+          "Nuclear Energy and the Fossil Fuels." Edited by M. K. Hubbert. 
+          Drilling and Production Practice (Shell Development Co., Exploration and Production Research Division.), 1956.
+        </a>
+      </p>
+    </li>
+
+    <li>
+      <p id="ref-Hirsch-2005"><em>Hirsch 2005</em>
+        <a href="https://www.osti.gov/servlets/purl/939271">
+          Peaking of World Oil Production: Impacts, Mitigation, & Risk Management. 
+          Edited by R. L. Hirsch, R. Bezdek and R. Wendling. Washington, DC: US Department of Energy, 2005.
+        </a>
+      </p>
+    </li>
+
     
   </ul>
 
@@ -939,8 +955,8 @@ EU-CSWD. EU SWD(2014) 330 final, Commission Staff Working Document: In-depth stu
 EU-En-Infr. Energy Infrastructure; Priorities for 2020 and Beyond- A Blueprint for an Integrated European Energy Network. Luxemburg: Publications Office of the European Union, 2011.
 
 EU-Fig. EU Key Figures for Energy. European Commission, Directorate for Energy, June 2011.
-Hirsch. Peaking of World Oil Production: Impacts, Mitigation, & Risk Management. Edited by R. L. Hirsch, R. Bezdek and R. Wendling. Washington, DC: US Department of Energy, 2005.
-Hubbert. "Nuclear Energy and the Fossil Fuels." Edited by M. K. Hubbert. Drilling and Production Practice (Shell Development Co., Exploration and Production Research Division.), 1956.
+
+
 IEA-Pol. Worldwide Engagement for Sustainable Energy Strategies. Paris Cedex 15, France: IEA Publishing, 2014.
 
 
@@ -973,10 +989,13 @@ US DoE. Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S
             src="https://www.mathjax.org/badge/badge-square-2.png"
             border="0" alt="Powered by MathJax" />
         </a>
-
       </p>
 
-      
+      <div class="w3-container w3-center">
+        <a href="/index.html" id="return">
+          <h4>Back to the Blog</h4>
+        </a>
+      </div>
 
     </footer>
     

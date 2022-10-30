@@ -9,8 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    
     <style>
-    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+      body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+      a:link {
+        text-decoration: none;
+      }
+      a:visited {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
     <title>Personal Blog</title>
   </head>
@@ -35,7 +45,7 @@
           
           <!-- Blog entry -->
           <div class="w3-card-4 w3-margin w3-white" id="feat-blog">
-            <img src="/images/woods.jpg" alt="Nature" style="width:100%">
+            <img src="/images/woods.jpg" alt="Nature" class="w3-image">
             <div class="w3-container">
               <h3 id="feat-blog-title"><b></b></h3>
               <h5>
@@ -58,15 +68,16 @@
                 </p>
               </div>
               <div class="w3-col m4 w3-hide-small">
-                <p><span class="w3-padding-large w3-right">
-                  <b>Comments</b>
-                  <span class="w3-tag">0</span></span>
+                <p>
+                  <span class="w3-padding-large w3-right">
+                    <b>Comments</b>
+                    <span id="feat-blog-comments-num" class="w3-tag"></span>
+                  </span>
                 </p>
               </div>
             </div>
-
-            <div class="" id="feat-blog-body">
-            </div>
+            
+            <div class="" id="feat-blog-body"></div>
 
           </div>
           <hr>
@@ -104,8 +115,8 @@
                     $("#feat-blog-author")
                       .text( result.featuredpost.author );
 
-                    $("#feat-blog-abstract")
-                      .text(JSON.stringify(result.featuredpost.abstract));
+                    //  JSON.stringify(result.featuredpost.abstract);
+                    $("#feat-blog-abstract").text( result.featuredpost.abstract );
                     
                     $("#feat-blog-more").click("slow", function(){
                       for (let n = 0; n < result.featuredpost.body.length; n++) {
@@ -118,6 +129,9 @@
                       $("#feat-blog-body").slideToggle("slow");
                     });
 
+                    $("#feat-blog-comments-num").text( result.featuredpost.comments.length );
+
+
                   }
                 }
               );
@@ -129,7 +143,7 @@
 
           <!-- Blog entry -->
           <div class="w3-card-4 w3-margin w3-white" id="blog0">
-            <img src="/images/bridge.jpg" alt="Norway" style="width:100%">
+            <img src="/images/skies.jpg" alt="Skies" class="w3-image">
             <div class="w3-container">
               <h3 id="blog0-title"><b></b></h3>
               <h5>
@@ -144,13 +158,26 @@
               
               <div class="w3-row">
                 <div class="w3-col m8 s12">
-                  <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                  <p>
+                    <button class="w3-button w3-padding-large w3-white w3-border" id="blog0-more">
+                      <b>READ MORE »</b>
+                    </button>
+                  </p>
                 </div>
                 <div class="w3-col m4 w3-hide-small">
-                  <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+                  <p>
+                    <span class="w3-padding-large w3-right">
+                      <b>Comments</b> 
+                      <span id="blog0-comments-num" class="w3-badge"></span>
+                    </span>
+                  </p>
                 </div>
               </div>
+
+              <div class="" id="blog0-body"></div>
+
             </div>
+
           </div>
           <hr>
 
@@ -182,19 +209,22 @@
                     $("#blog0-author")
                       .text( result.posts[0].author );
 
-                    $("#blog0-abstract")
-                      .text(JSON.stringify(result.posts[0].abstract));
+                    // text(JSON.stringify(result.posts[0].abstract));
+                    $("#blog0-abstract").text( result.posts[0].abstract );
                     
-                    $("#feat-blog-more").click("slow", function(){
-                      for (let n = 0; n < result.featuredpost.body.length; n++) {
+                    $("#blog0-more").click("slow", function(){
+                      for (let n = 0; n < result.posts[0].body.length; n++) {
 
-                        $("#feat-blog-body")
+                        $("#blog0-body")
                         .add("p #para")
-                        .text( result.featuredpost.body[n] );
+                        .text( result.posts[0].body[n] );
 
                       }
-                      $("#feat-blog-body").slideToggle("slow");
+                      $("#blog0-body").slideToggle("slow");
                     });
+
+                    $("#blog0-comments-num").text( result.posts[0].comments.length );
+
 
                   }
                 }
@@ -204,16 +234,14 @@
 
           </script>
 
-          
-
         </div><!-- END BLOG ENTRIES -->
 
         <!-- Introduction menu -->
-        <div class="w3-col l4">
+        <div class="w3-col">
 
           <!-- About Card -->
           <div class="w3-card w3-margin w3-margin-top">
-            <img src="/images/cern.jpg" style="width:100%">
+            <img src="/images/cern.jpg" style="width: 400px" class="w3-image">
             
             <div class="w3-container w3-white">
               <h4><b>Dimitris Koupatsiaris</b></h4>
@@ -224,39 +252,60 @@
           </div>
           <hr>
 
-          <!-- Posts -->
-          <div class="w3-card w3-margin">
+          <!-- Papers -->
+          <div class="w3-auto w3-margin">
             <div class="w3-container w3-padding">
-              <h4>Popular Posts</h4>
+              <h4>Papers</h4>
             </div>
 
             <ul class="w3-ul w3-hoverable w3-white">
+              
+
+
+              
               <li class="w3-padding-16">
-                <img src="/images/logo_ashrae.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">Lorem</span>
+
+                <img src="/Papers/zbynek-burival-GrmwVnVSSdU-unsplash.jpg" 
+                  alt="Pump-jack mining crude oil with the sunset" 
+                  class="w3-left w3-margin-right" style="width:100px"
+                  id="paper1-image">
+
+                <a href="/Papers/EnergySecurity.html"
+                  >
+                  <span class="w3-medium" id="paper1-title"></span>
+                </a>
                 <br>
-                <span>Sed mattis nunc</span>
+                <span class="w3-small" id="paper1-abstract"></span>
               </li>
+
+              <script>
+
+                $(document).ready(function(){
+                  
+                  $("#paper1-title")
+                    .load("/Papers/EnergySecurity.html #pub-title");
+
+                  $("#paper1-abstract")
+                    .load("/Papers/EnergySecurity.html #abstract p");
+                  
+                });
+    
+              </script>
+
+
               <li class="w3-padding-16">
-                <img src="/images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">Ipsum</span>
+                <img src="/images/logo_ashrae.png" alt="ASHRAE Logo" 
+                  class="w3-left w3-margin-right" style="width:50px">
+                <span class="w3-large">Lorem Ipsum</span>
                 <br>
                 <span>Praes tinci sed</span>
               </li>
-              <li class="w3-padding-16">
-                <img src="/images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">Dorum</span><br>
-                <span>Ultricies congue</span>
-              </li>
-              <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                <img src="/images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">Mingsum</span>
-                <br>
-                <span>Lorem ipsum dipsum</span>
-              </li>
+              
             </ul>
           </div>
           <hr>
+
+
 
           <!-- Labels / tags -->
           <div class="w3-card w3-margin">
@@ -265,14 +314,18 @@
             </div>
               <div class="w3-container w3-white">
                 <p>
-                  <a id="opinion" href="#opinion">
+                  <a id="tag-opinion" href="#opinion">
                     <span class="w3-tag w3-black w3-margin-bottom">Opinion</span>
                   </a>
-                  
+                  <a id="tag-technology" href="#technology">
+                    <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Technology</span>
+                  </a>
+                  <a id="tag-science" href="#science">
+                    <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Science</span>
+                  </a>
                   <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Travel</span>
-                  <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Technology</span>
                   <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Web Development</span>
-                  <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Science</span>
+                  
                   <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Health</span>
                   <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
                   <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span>
@@ -316,12 +369,9 @@
         <a href="https://sites.google.com/datahermeneutics.com/welcome">
           Data Hermeneutics
         </a>. 
-        All right reserved.
+        Mail to: <a href="mailto:dkoupats@datahermeneutics.com">dkoupats@datahermeneutics.com</a> 
       </p>
-      <p>Mail to: 
-        <a href="mailto:dkoupats@datahermeneutics.com">
-          dkoupats@datahermeneutics.com
-        </a> 
+      <p>
       </p>
       
     </footer>

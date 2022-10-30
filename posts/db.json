@@ -4,7 +4,7 @@
             {
                 "id": 1
                 , "title": "Energy Security in Small Scale"
-                , "relation": "Science"
+                , "subject": "Science"
                 , "author": "Dimitris Koupatsiaris"
                 , "date": "2022-03-02"
                 , "abstract": "One definition of energy security is from the International Energy Agency, which states that it is the uninterrupted availability of energy sources at an affordable price, both in short-term as well as in long-term."
@@ -13,12 +13,22 @@
                     "If the global energy network is observed as a system, it consists of many interacting subsystems in smaller scales; therefore it is interesting to investigate to what degree the principles of large scale apply to smaller scales as well. The focus will be on structures/systems that are complex and complete technological products for which energy consumption in the form of fuel or energy source is a considerable fraction of their life cost, and when grouped they form major sectors in the global energy map. To be more specific, the focus will be on buildings (residential, office or industrial) and vehicles (automobiles, rail, ships and aircraft), since they are designed and constructed with a life span of at least two decades, and the process of consuming energy is part of their core function."
                     , "Robustness to short-term disruptions in various degrees is commonplace in the majority of structures. Just a few examples are backup generators in buildings, battery assisted uninterrupted power supplies (UPS), switchboard change-over switches between alternative electric power supplies from the grid, dual and backup supplies to critical systems (propulsion, power supply, HVAC, payload) which are commonplace in naval architecture, overhead design in marine power generation and propulsion (also to increase maintainability), and similar and even more elaborate solutions in aviation industry to also meet the aviation safety requirements. In addition, robustness to short-term disruptions will also benefit with the implementation of a number of technology initiatives (such as the smart grid, the total electric ship and others) which are underway."
                     ]
-            
+                , "comments": 
+                    [
+                        {
+                            "postId": 1
+                            , "body": "some comment"
+                        }
+                        ,{
+                            "postId": 2
+                            , "body": "some more comment"
+                        }
+                    ]            
             }
             , {
                 "id": 2
                 , "title": "Some title"
-                , "relation": "Technology"
+                , "subject": "Technology"
                 , "author": "Dimitris Koupatsiaris"
                 , "date": "2022-03-03"
                 , "abstract": "Some abstract."
@@ -27,12 +37,23 @@
                     "Para 1."
                     , "Para 2."
                     ]
-            }
+                , "comments": 
+                    [
+                        {
+                            "postId": 1
+                            , "body": "some comment"
+                        }
+                        ,{
+                            "postId": 2
+                            , "body": "some more comment"
+                        }
+                    ]
+            }            
         ]
     , "featuredpost": 
         {
             "title": "The Difficulty in Publishing One's Thoughts",
-            "relation": "Opinion",
+            "subject": "Opinion",
             "author": "Dimitris Koupatsiaris",
             "date": "2022-03-20",
             "abstract": "The motivation for this post was my decision to deploy my first personal webpage in Github. Although I anticipated the difficulty of producing the code for the webpage, I did not anticipate the seemingly simple process of writing down a few lines of text in order to make the blog real and not full of enpressions like post1, para2 and others that make the reader believe that the author is incapable of expressing himself/herself.",
@@ -45,23 +66,20 @@
                 [
                     {
                         "postId": 1
-                        , "body": "some comment"
+                        , "body": "some comment 1"
                     }
                     ,{
                         "postId": 2
-                        , "body": "some more comment"
+                        , "body": "some comment 2"
+                    }
+                    ,{
+                        "postId": 3
+                        , "body": "some comment 3"
+                    }
+                    ,{
+                        "postId": 4
+                        , "body": "some comment 4"
                     }
                 ]
         }
-    , "comments": 
-        [
-            {
-                "postId": 1
-                , "body": "some comment"
-            }
-            ,{
-                "postId": 2
-                , "body": "some more comment"
-      }
-    ]
   }
