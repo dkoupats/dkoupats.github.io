@@ -150,7 +150,7 @@
     </section>
       
     <section id="intro">
-      <h2><b>INTRODUCTION</b></h2>
+      <h3><b>INTRODUCTION</b></h3>
       <p>One definition of energy security is from the International Energy Agency, 
         which states that it is the uninterrupted availability of energy sources at an affordable price, both in short-term as well as in long-term. 
         Long-term energy security mainly deals with timely investments to supply energy in line with economic developments and environmental needs, 
@@ -211,7 +211,7 @@
 
 
     <section id="small-scale">
-      <h2><b>ENERGY SECURITY IN SMALL SCALE</b></h2>
+      <h3><b>ENERGY SECURITY IN SMALL SCALE</b></h3>
       <p>
         If the global energy network is observed as a system, 
         it consists of many interacting subsystems in smaller scales; 
@@ -595,7 +595,7 @@
 
 
     <section id="energy-crisis">
-      <h2><b>2000'S ENERGY CRISIS AND THE CONNECTION TO PEAK OIL</b></h2>
+      <h3><b>2000'S ENERGY CRISIS AND THE CONNECTION TO PEAK OIL</b></h3>
 
       <p>
         Many analysts argue that the collection of energy crises during the first decade of the 21st century form one crisis, usually called the 2000's energy crisis. 
@@ -722,7 +722,7 @@
 
       <section id="hubbert-subsection">
 
-        <h3><b>Hubbert Peak Theory</b></h3>
+        <h4><b>Hubbert Peak Theory</b></h4>
 
         <p>
           The Hubbert peak theory is based on the observation that, in any finite geographical area the rate of production 
@@ -786,7 +786,7 @@
 
         <p>
           In order to quantify the cost increase, we could consider a simplified problem. 
-          We define a fictitious energy source with reserve \( R_1 = F ( \infty, \mu = 2050, s=25 ) \), where \( F ( \infty ) = 1 \). 
+          We define a fictitious energy source with reserve \( R_1 = F ( \infty, \mu = 2040, s=25 ) \), where \( F ( \infty ) = 1 \). 
           We assume the knowledge of two more reservoirs that each adds 20% to the total reserve. 
           Furthermore, the associated costs per unit are: \( C_1 = 1 \), \( C_2 = 1.2 \) and \( C_3 = 1.4 \). 
           The objective of the problem is to maintain a stable production growth in order to meet the energy demands, 
@@ -824,9 +824,91 @@
           to maintain a stable production growth, follows a geometric progression with ratio larger than 1. 
         </p>
 
-        <p>
+        <div class="w3-display-container" style="height:500px;">
+          <figure class="w3-middle" id="figure3">
+            <div id="resource-plot" class="w3-middle" style="width:600px; height:400px;">
+            </div>
+            <figcaption>
+              Figure 3. Subsequent Resource Curves that meet Stable Growth Demands. 
+            </figcaption>
+          </figure>
+        </div>
+  
+        <script>
+          resourcePlot = document.getElementById('resource-plot');
+
+          let years = [1850];
+          for (let n = 1, len = 126; n < len; n++) {
+            years.push( years[0] + 2*n );
+          }
           
-        </p>
+          
+
+          let f1arr = years.map(f1);
+          let f2arr = years.map(f2);
+          let f3arr = years.map(f3);
+
+          function f1(num) {
+            const mu = 2040;
+            const ss = 25;
+            let nomin = Math.pow(Math.E, (num - mu)/ss );
+            let denom = ss*Math.pow( 1+ nomin, 2 );
+            return 100*nomin/denom;
+          }
+
+          function f2(num) {
+            const mu = 2050;
+            const ss = 25;
+            let nomin = Math.pow(Math.E, (num - mu)/ss );
+            let denom = ss*Math.pow( 1+ nomin, 2 );
+            return 100*1.2*nomin/denom;
+          }
+
+          function f3(num) {
+            const mu = 2062;
+            const ss = 25;
+            let nomin = Math.pow(Math.E, (num - mu)/ss );
+            let denom = ss*Math.pow( 1+ nomin, 2 );
+            return 100*1.4*nomin/denom;
+          }
+  
+          var trace1 = {
+            x: years
+            , y: f1arr
+            , mode: 'lines'
+            , name: 'f1(x)'
+          };
+  
+          var trace2 = {
+            x: years
+            , y: f2arr
+            , mode: 'lines'
+            , name: 'f2(x)'
+          };
+  
+          var trace3 = {
+            x: years
+            , y: f3arr
+            , mode: 'lines'
+            , name: 'f3(x)'
+          };
+  
+          var dataPlot = [trace1, trace2, trace3 ];
+  
+          var layout = {
+            yaxis: {
+              title: 'Resourse Extraction per year (%)'
+              , titlefont: {
+                size: 16
+                , color: 'rgb(107, 107, 107)'
+              }
+            }
+            , barmode: 'stack'
+          };
+          
+          Plotly.newPlot( resourcePlot, dataPlot, layout);
+        
+        </script>
 
         <p>
           In reality problems are more complicated, since cost estimates can be verified only after extraction 
@@ -841,149 +923,280 @@
           constitute a risk that has to be managed. 
         </p>
 
+      </section>
+
+    </section>
+
+
+    <section id="systems-section">
+
+      <h3><b>OVERVIEW OF SYSTEMS ENGINEERING</b></h3>
+
+      <p>
+        Systems engineering is an interdisciplinary field of engineering that focuses on how to design 
+        and manage complex engineering systems over their life cycles. 
+        As such, it is a methodical, disciplined approach for the design, realization, technical management, 
+        operations, and retirement of a system, (NASA/SP-6105 2007). 
+        Due to the fact that systems come at different complexities, a useful way of categorizing them is 
+        based on the number of parts, and in particular in 7 levels (MIT OCW 16.842 2009). 
+        Just as an overview of the functionality of the systems engineering (SE) “engine” 
+        that is applicable to all system levels, requirements flow down from higher to lower level, 
+        and realized products climb from lower to higher level. 
+        Although it is not the scope of this work to elaborate on the SE engine, a brief overview of 
+        the system design process, especially decision analysis and risk management, is useful. 
+      </p>
+
+      <p>
+        Decision analysis process offers techniques for modeling decision problems mathematically, 
+        and finding optimal decisions numerically. 
+        Decision models have the capacity for accepting and quantifying human subjective inputs, 
+        such as judgments of subject matter experts and preferences of decision makers. 
+        The problem is structured by identifying alternatives, one of which must be decided upon; 
+        possible events, one of which occurs thereafter; 
+        and outcomes, each of which results from a combination of decision and event. 
+        Typically, the application of decision analysis is needed when some of the following 
+        conditions are met: high stakes, complexity, uncertainty, multiple attributes, 
+        or diversity of stakeholders. 
+      </p>
+
+      <p>
+        The technical risk management process is defined as the joint probability function of: 
+        <ol>
+          <li>
+            the probability that a program or project will experience an undesired effect, and
+          </li>
+          <li>
+            the probability of the consequences, impact or severity of the undesired event. 
+          </li>
+        </ol>
+      </p>
+
+      <p>
+        The technical risk management process focuses on project objectives, bringing to bear 
+        an analytical basis for risk management decisions and the ensuing management activities, 
+        and a framework for dealing with uncertainty. 
+        The risk may be Programmatic Risk, Technical Risk, Cost Risk, or Schedule Risk. 
+      </p>
+
+
+      <section id="oil-peak-subsection">
+
+        <h4><b>Oil Peak as Risk Affecting Life-Cycle Cost</b></h4>
+
+        <p>
+          As described, the introduction of new technologies and techniques, 
+          including those that introduce renewable energy sources is considered during the system design process. 
+          However as already stated, the innovating technologies come with a risk that has to be mitigated, 
+          and if mitigation measures do not reduce the risk in an acceptable level, 
+          the risk is avoided and the new technology is not introduced. 
+          On the other hand, life cycle energy cost is computed based on estimations made by International Organizations, 
+          Governments or consultants. 
+          Such estimations are provided with a smooth (most of the times linear) evolution of fuel costs, 
+          and the estimates are considered by system designers with certainty, although they are the results of stochastic estimation. 
+          As a consequence, fuel cost is regarded as a deterministic risk-free factor that “plugs in” 
+          the life cycle estimation process with no risk management, although poor estimations of fuel cost 
+          have already had major impact on businesses and households in numerous occasions in recent years. 
+        </p>
+
+        <p>
+          The definition of risk in fuel price is the joint probability function of: 
+
+          <ol>
+            <li>
+              the probability that the inflation-free fuel price will reach a certain level during 
+              a specific period during the system life and 
+            </li>
+            <li>
+              the probability that this price will lead to the decision for the system to stop operations. 
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          By defining the above mentioned risk, two families of curves should be produced, one for the long-term trend, 
+          and one for the short-to-medium term disruptions. 
+          Each family should include at least 3 scenarios, the optimistic, the most probable, and the pessimistic. 
+          Then the risk should be included in the risk management and decision making processes, 
+          together with the risks of introducing new technologies. 
+          The aim of the proposal above is not to promote the use of renewable energy sources, but to evaluate two risks, 
+          that function contrary to each other, in the same process. 
+        </p>
 
       </section>
 
+    </section>
+
+    <section id="conclusions-section">
+
+      <h3><b>CONCLUSIONS</b></h3>
+
+      <p>
+        By transferring the principles of energy security from the international scale to the smaller scale of 
+        the built environment (building, automotive, maritime shipping and aviation industries), 
+        it was observed not only that they can be applied, but they are actually in use, 
+        although with different naming conventions. 
+        However, the transportation sector is heavily (almost exclusively) dependent on crude oil, 
+        which is contrary to global trend and policies. 
+        A simplified example based on the Hubbert peak theory indicated that there is a non-trivial 
+        and computable risk to shut-down a system during operational life due to high energy cost. 
+      </p>
+
+      <p>
+        From all the systems that make up the transportation sector, ships combine a unique set of characteristics. 
+        Due to their nature, they combine the characteristics of residential buildings (crew accommodations), 
+        industrial buildings (propulsion and payload machinery), and utility grids coexisting in one platform. 
+        Thus, they provide the size and space for the introduction of new technologies without substantial compromise 
+        in their operational characteristics. 
+        From that aspect, ships allow the introduction of mixed blends of energy sources. 
+        A few examples could be mentioned such as, marine diesel combined with synthetic fuel, or solar energy, 
+        or wind energy, or wave power. 
+        This combination of energy sources in the same platform can permit further innovation towards increasing 
+        the footprint of renewable energy sources in the shipping industry as a whole. 
+        This sort of undertaking would be an unnecessary risk for both ship owners and shipbuilders alike, 
+        without the acknowledgement of the risk that the ship would have to stop operating due to high marine fuel oil price. 
+        This risk acts contrary to the risks of employing an untested, technologically immature, less efficient, 
+        or unverified energy source, hence an engineering trade-off should have to be acknowledged. 
+      </p>
+
+      <p>
+        Although the process of gradually shifting away from non-renewable energy sources resembles at the first glance 
+        the historical shift from coal to fuel oil in the interwar period, under more careful consideration it resembles 
+        more the shift from sail to coal in the 19th century. 
+        This is due to the attribute that, just like the 19th century, the new and untested technology needs to work together 
+        with the safe and reliable technology, and probably the same process of technological innovation will be repeated. 
+        It seems like a historic irony to shift from renewable energy sources to fossil fuels and 200 years later to shift back, 
+        however it serves as a reminder that a technological solution, even if it remains unchallenged for a long time, 
+        is neither indisputable nor it necessarily meets the needs of the times. 
+      </p>
+
 
     </section>
+
+
+
+    <section id="ref-section">
+      <h2><b>REFERENCES</b></h2>
+
+      <ul id="references">
+
+        <li>
+          <p id="ref-US-WH-2013"><em>US White House</em>
+            <a href="http://www.whitehouse.gov/sites/default/files/image/president27sclimateactionplan.pdf">
+              US Executive Office of the President of the United States of America, June 2013.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-EU-Strat-2014"><em>EU-Expl</em>
+            <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:52014DC0330">
+              COMMUNICATION FROM THE COMMISSION TO THE EUROPEAN PARLIAMENT AND THE COUNCIL European Energy Security Strategy, May 2014.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-IEA-Stats-2014"><em>IEA-Stats</em>
+            <a href="https://www.iea.org/reports/world-energy-outlook-2022">
+              2014 Key World Energy Statistics. Paris Cedex 15, France: IEA Publishing, 2014.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-inflation-data-2015"><em>Inflation Data 2015</em>
+            <a href="http://inflationdata.com/Inflation/Inflation_Rate/Historical_Oil_Prices_Chart.asp">
+              2015 Inflation Data (accessed January 2015).
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-Hubbert-1956"><em>Hubbert 1956</em>
+            <a href="http://www.energycrisis.com/Hubbert/1956/1956.pdf">
+              "Nuclear Energy and the Fossil Fuels." Edited by M. K. Hubbert. 
+              Drilling and Production Practice (Shell Development Co., Exploration and Production Research Division.), 1956.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-Hirsch-2005"><em>Hirsch 2005</em>
+            <a href="https://www.osti.gov/servlets/purl/939271">
+              Peaking of World Oil Production: Impacts, Mitigation, & Risk Management. 
+              Edited by R. L. Hirsch, R. Bezdek and R. Wendling. Washington, DC: US Department of Energy, 2005.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-eu-cswd-2014"><em>EU CSWD 2014</em>
+            <a href="#ref-eu-cswd-2014">
+              330 final, Commission Staff Working Document: In-depth study of European Energy Security. Brussels: European Commission, July 2014.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-eu-en-infra-2011"><em>EU Energy Infrastructure 2011</em>
+            <a href="#ref-eu-en-infra-2011">
+              Energy Infrastructure; Priorities for 2020 and Beyond- A Blueprint for an Integrated European Energy Network. 
+              Luxemburg: Publications Office of the European Union, 2011. 
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-eu-fig-2011"><em>EU Figures 2011</em>
+            <a href="#ref-eu-fig-2011">
+              EU-Fig. EU Key Figures for Energy. European Commission, Directorate for Energy, June 2011.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-iea-pol-2014"><em>IEA Pol 2014</em>
+            <a href="#ref-iea-pol-2014">
+              Worldwide Engagement for Sustainable Energy Strategies. Paris Cedex 15, France: IEA Publishing, 2014.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-mit-ocw-15031j-2012"><em>MIT OCW 15.031J</em>
+            <a href="http://ocw.mit.edu">
+              "MIT OpenCourseWare." Richard Schmalenseeare, Spring 2012, (accessed Jan 28, 2015).
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-mit-ocw-16842-2009"><em>MIT OCW 16.842</em>
+            <a href="http://ocw.mit.edu">
+              "MIT OpenCourseWare". Olivier de Weck, Fall 2009, (accessed Jan 25, 2015). 
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-nasa-sp-6105"><em>NASA/SP-6105</em>
+            <a href="https://soma.larc.nasa.gov/mmx/pdf_files/NASA-SP-2007-6105-Rev-1-Final-31Dec2007.pdf">
+              NASA/SP-2007-6105 Rev1, Systems Engineering Handbook. Washington, DC: National Aeronautics and Space Administration, 2007.
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <p id="ref-iea-pol-2014"><em>US DoE 2014</em>
+            <a href="https://www.eia.gov/outlooks/aeo/">
+              Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S. Energy Information Administration, U.S. Department of Energy, April 2014.
+            </a>
+          </p>
+        </li>
+        
+      </ul>
     
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-Figure 3 Subsequent Resource Curves that meet Stable Growth Demands
-
-OVERVIEW OF SYSTEMS ENGINEERING
-Systems engineering is an interdisciplinary field of engineering that focuses on how to design and manage
-complex engineering systems over their life cycles. As such, it is a methodical, disciplined approach for the design,
-realization, technical management, operations, and retirement of a system, (NASA/SP-6105 2007). Due to the fact
-0,00000
-0,00200
-0,00400
-0,00600
-0,00800
-0,01000
-0,01200
-0,01400
-0,01600
-0,01800
-1800 1850 1900 1950 2000 2050 2100 2150
-f1(x)
-Tangent to f1(x)
-f2(x)
-f3(x)
-
-
-that systems come at different complexities, a useful way of categorizing them is based on the number of parts, and in particular in 7 levels (MIT OCW 16.842 2009). Just as an overview of the functionality of the systems engineering (SE) “engine” that is applicable to all system levels, requirements flow down from higher to lower level, and realized products climb from lower to higher level. Although it is not the scope of this work to elaborate on the SE engine, a brief overview of the system design process, especially decision analysis and risk management, is useful.
-Decision analysis process offers techniques for modeling decision problems mathematically, and finding optimal decisions numerically. Decision models have the capacity for accepting and quantifying human subjective inputs, such as judgments of subject matter experts and preferences of decision makers. The problem is structured by identifying alternatives, one of which must be decided upon; possible events, one of which occurs thereafter; and outcomes, each of which results from a combination of decision and event. Typically, the application of decision analysis is needed when some of the following conditions are met: high stakes, complexity, uncertainty, multiple attributes, or diversity of stakeholders.
-The technical risk management process is defined as the joint probability function of 1- the probability that a program or project will experience an undesired effect, and 2- the probability of the consequences, impact or severity of the undesired event. The technical risk management process focuses on project objectives, bringing to bear an analytical basis for risk management decisions and the ensuing management activities, and a framework for dealing with uncertainty. The risk may be Programmatic Risk, Technical Risk, Cost Risk, or Schedule Risk.
-Oil Peak as Risk Affecting Life-Cycle Cost
-As described, the introduction of new technologies and techniques, including those that introduce renewable energy sources is considered during the system design process. However as already stated, the innovating technologies come with a risk that has to be mitigated, and if mitigation measures do not reduce the risk in an acceptable level, the risk is avoided and the new technology is not introduced. On the other hand, life cycle energy cost is computed based on estimations made by International Organizations, Governments or consultants. Such estimations are provided with a smooth (most of the times linear) evolution of fuel costs, and the estimates are considered by system designers with certainty, although they are the results of stochastic estimation. As a consequence, fuel cost is regarded as a deterministic risk-free factor that “plugs in” the life cycle estimation process with no risk management, although poor estimations of fuel cost have already had major impact on businesses and households in numerous occasions in recent years.
-The definition of risk in fuel price is the joint probability function of 1- the probability that the inflation-free fuel price will reach a certain level during a specific period during the system life and 2- the probability that this price will lead to the decision for the system to stop operations. By defining the above mentioned risk, two families of curves should be produced, one for the long-term trend, and one for the short-to-medium term disruptions. Each family should include at least 3 scenarios, the optimistic, the most probable, and the pessimistic. Then the risk should be included in the risk management and decision making processes, together with the risks of introducing new technologies. The aim of the proposal above is not to promote the use of renewable energy sources, but to evaluate two risks, that function contrary to each other, in the same process.
-CONCLUSIONS
-By transferring the principles of energy security from the international scale to the smaller scale of built environment (building, automotive, maritime shipping and aviation industries), it was observed not only that they can be applied, but they are actually in use, although with different naming conventions. However, the transportation sector is heavily (almost exclusively) dependent on crude oil, which is contrary to global trend and policies. A simplified example based on the Hubbert peak theory indicated that there is a non-trivial and computable risk to shut-down a system during operational life due to high energy cost.
-From all the systems that make up the transportation sector, ships combine a unique set of characteristics. © 2015 ASHRAE (www.ashrae.org). For personal use only. Additional reproduction, distribution, or transmission in either print or digital form is not
-permitted without ASHRAE's prior written permission.
-Due to their nature, they combine the characteristics of residential buildings (crew accommodations), industrial buildings (propulsion and payload machinery), and utility grids coexisting in one platform. Thus, they provide the size and space for the introduction of new technologies without substantial compromise in their operational characteristics. From that aspect, ships allow the introduction of mixed blends of energy sources. A few examples could be mentioned such as, marine diesel combined with synthetic fuel, or solar energy, or wind energy, or wave power. This combination of energy sources in the same platform can permit further innovation towards increasing the footprint of renewable energy sources in the shipping industry as a whole. This sort of undertaking would be an unnecessary risk for both ship owners and shipbuilders alike, without the acknowledgement of the risk that the ship would have to stop operating due to high marine fuel oil price. This risk acts contrary to the risks of employing an untested, technologically immature, less efficient, or unverified energy source, hence an engineering trade-off should have to be acknowledged.
-Although the process of gradually shifting away non-renewable energy sources resembles at the first glance the historical shift from coal to fuel oil in the interwar period, under more careful consideration it resembles more the shift from sail to coal in the 19th century. This is due to the attribute that, just like the 19th century, the new and untested technology needs to work together with the safe and reliable technology, and probably the same process of technological innovation will be repeated. It seems like a historic irony to shift from renewable energy sources to fossil fuels and 200 years later to shift back, however it serves as a reminder that a technological solution, even if it remains unchallenged for a long time, is neither indisputable nor it necessarily meets the needs of the times.
-
-
-<section id="ref-section">
-  <h2><b>REFERENCES</b></h2>
-
-  <ul id="references">
-
-    <li>
-      <p id="ref-US-WH-2013"><em>US White House</em>
-        <a href="http://www.whitehouse.gov/sites/default/files/image/president27sclimateactionplan.pdf">
-           US Executive Office of the President of the United States of America, June 2013.
-        </a>
-      </p>
-    </li>
-
-    <li>
-      <p id="ref-EU-Strat-2014"><em>EU-Expl</em>
-        <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:52014DC0330">
-          COMMUNICATION FROM THE COMMISSION TO THE EUROPEAN PARLIAMENT AND THE COUNCIL European Energy Security Strategy, May 2014.
-        </a>
-      </p>
-    </li>
-
-    <li>
-      <p id="ref-IEA-Stats-2014"><em>IEA-Stats</em>
-        <a href="https://www.iea.org/reports/world-energy-outlook-2022">
-          2014 Key World Energy Statistics. Paris Cedex 15, France: IEA Publishing, 2014.
-        </a>
-      </p>
-    </li>
-
-    <li>
-      <p id="ref-inflation-data-2015"><em>Inflation Data 2015</em>
-        <a href="http://inflationdata.com/Inflation/Inflation_Rate/Historical_Oil_Prices_Chart.asp">
-          2015 Inflation Data (accessed January 2015).
-        </a>
-      </p>
-    </li>
-
-    <li>
-      <p id="ref-Hubbert-1956"><em>Hubbert 1956</em>
-        <a href="http://www.energycrisis.com/Hubbert/1956/1956.pdf">
-          "Nuclear Energy and the Fossil Fuels." Edited by M. K. Hubbert. 
-          Drilling and Production Practice (Shell Development Co., Exploration and Production Research Division.), 1956.
-        </a>
-      </p>
-    </li>
-
-    <li>
-      <p id="ref-Hirsch-2005"><em>Hirsch 2005</em>
-        <a href="https://www.osti.gov/servlets/purl/939271">
-          Peaking of World Oil Production: Impacts, Mitigation, & Risk Management. 
-          Edited by R. L. Hirsch, R. Bezdek and R. Wendling. Washington, DC: US Department of Energy, 2005.
-        </a>
-      </p>
-    </li>
-
-    
-  </ul>
-
-
-  
-
-  
-
-
-
-EU-CSWD. EU SWD(2014) 330 final, Commission Staff Working Document: In-depth study of European Energy Security. Brussels: European Commission, July 2014.
-EU-En-Infr. Energy Infrastructure; Priorities for 2020 and Beyond- A Blueprint for an Integrated European Energy Network. Luxemburg: Publications Office of the European Union, 2011.
-
-EU-Fig. EU Key Figures for Energy. European Commission, Directorate for Energy, June 2011.
-
-
-IEA-Pol. Worldwide Engagement for Sustainable Energy Strategies. Paris Cedex 15, France: IEA Publishing, 2014.
-
-
-MIT OCW 15.031J. "MIT OpenCourseWare." Richard Schmalenseeare. Spring 2012. http://ocw.mit.edu (accessed Jan 28, 2015).
-MIT OCW 16.842. "MIT OpenCourseWare." http://ocw.mit.edu. Olivier de Weck. Fall 2009. http://ocw.mit.edu (accessed Jan 25, 2015).
-NASA/SP-6105. NASA/SP-2007-6105 Rev1, Systems Engineering Handbook. Washington, DC: National Aeronautics and Space Administration, 2007.
-US DoE. Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S. Energy Information Administration, U.S. Department of Energy, April 2014.
-
-</section>
-
-
-
-
+    </section>
     
 
     <!-- Footer -->
@@ -995,14 +1208,18 @@ US DoE. Annual Energy Outlook 2014 with projections to 2040. Washington, DC: U.S
         is not permitted without ASHRAE's or the author's prior written permission. 
       </p>
 
-      <p>Powered by 
+      <p>Libraries used: 
         <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3.CSS</a> 
-        and 
-        <a href="https://www.mathjax.org">
+        , and 
+        <a href="https://www.mathjax.org" target="_blank">
           <img title="Powered by MathJax"
             src="https://www.mathjax.org/badge/badge-square-2.png"
             border="0" alt="Powered by MathJax" />
         </a>
+        , and 
+          <a href="https://plotly.com/javascript/" target="_blank">
+            Plotly JavaScript
+          </a>
       </p>
 
       <div class="w3-container w3-center">
