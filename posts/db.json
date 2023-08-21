@@ -5,7 +5,7 @@
                 "id": 1
                 , "title": "Energy Security in Small Scale"
                 , "subject": "Science"
-                , "author": "Dimitris Koupatsiaris"
+                , "author": "Dimitris"
                 , "date": "2022-03-02"
                 , "abstract": "One definition of energy security is from the International Energy Agency, which states that it is the uninterrupted availability of energy sources at an affordable price, both in short-term as well as in long-term."
                 , "body": 
@@ -29,7 +29,7 @@
                 "id": 2
                 , "title": "Some title"
                 , "subject": "Technology"
-                , "author": "Dimitris Koupatsiaris"
+                , "author": "Dimitris"
                 , "date": "2022-03-03"
                 , "abstract": "Some abstract."
                 , "body": 
@@ -54,7 +54,7 @@
         {
             "title": "The Difficulty in Publishing One's Thoughts",
             "subject": "Opinion",
-            "author": "Dimitris Koupatsiaris",
+            "author": "Dimitris",
             "date": "2022-03-20",
             "abstract": "The motivation for this post was my decision to deploy my first personal webpage in Github. Although I anticipated the difficulty of producing the code for the webpage, I did not anticipate the seemingly simple process of writing down a few lines of text in order to make the blog real and not full of enpressions like post1, para2 and others that make the reader believe that the author is incapable of expressing himself/herself.",
             "body": 
